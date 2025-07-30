@@ -1,36 +1,32 @@
-import 'react-native-gesture-handler';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ */
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { NewAppScreen } from '@react-native/new-app-screen';
+import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import { MMKV } from 'react-native-mmkv';
-
-import ApplicationNavigator from '@/navigation/Application';
-import { ThemeProvider } from '@/theme';
-import '@/translations';
-
-export const queryClient = new QueryClient({
-  defaultOptions: {
-    mutations: {
-      retry: false,
-    },
-    queries: {
-      retry: false,
-    },
-  },
-});
+import "./global.css"
 
 export const storage = new MMKV();
 
 function App() {
+  const isDarkMode = useColorScheme() === 'dark';
+
   return (
-    <GestureHandlerRootView>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider storage={storage}>
-          <ApplicationNavigator />
-        </ThemeProvider>
-      </QueryClientProvider>
-    </GestureHandlerRootView>
+    <View style={styles.container}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <NewAppScreen templateFileName="App.tsx" />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default App;

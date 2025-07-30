@@ -14,5 +14,5 @@ module.exports = {
     'inline-dotenv',
     'react-native-reanimated/plugin', // needs to be last
   ],
-  presets: ['module:@react-native/babel-preset'],
+  presets: ['module:@react-native/babel-preset','nativewind/babel'],
 };
