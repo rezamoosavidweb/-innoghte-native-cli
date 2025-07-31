@@ -2,17 +2,27 @@
 module.exports = {
   plugins: [
     [
-      'module-resolver',
+      "module-resolver",
       {
         alias: {
-          '@': './src',
+          "@": "./src",
         },
-        extensions: ['.js', '.json'],
-        root: ['./src'],
+        extensions: [".js", ".json"],
+        root: ["./src"],
       },
     ],
-    'inline-dotenv',
-    'react-native-reanimated/plugin', // needs to be last
+    "inline-dotenv",
+    [
+      "module:react-native-dotenv",
+      {
+        envName: "ENV",
+        moduleName: "@env",
+        path: ".env",
+        allowUndefined: true,
+
+      },
+    ],
+    "react-native-reanimated/plugin", // needs to be last
   ],
-  presets: ['module:@react-native/babel-preset','nativewind/babel'],
+  presets: ["module:@react-native/babel-preset", "nativewind/babel"],
 };

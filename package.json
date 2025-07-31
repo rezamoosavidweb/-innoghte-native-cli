@@ -76,6 +76,7 @@
     "jest": "^30.0.5",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "react-native-dotenv": "^3.4.11",
     "react-native-svg-transformer": "^1.5.1",
     "react-test-renderer": "^19.1.1",
     "reactotron-core-client": "^2.9.7",
