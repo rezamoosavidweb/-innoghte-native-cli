@@ -9,9 +9,9 @@ import Animated, {
 } from "react-native-reanimated";
 import Svg, { Circle, Defs, LinearGradient, Stop } from "react-native-svg";
 
-import { Image } from "@/components/share/base";
-import Images from "@/lib/images";
-import { useThemeConfig } from "@/lib/use-theme-config";
+import { Image } from "@/share/components/base";
+import Images from "@/share/lib/images";
+import { useThemeConfig } from "@/share/hooks/use-theme-config";
 
 const AnimatedView = Animated.createAnimatedComponent(View);
 

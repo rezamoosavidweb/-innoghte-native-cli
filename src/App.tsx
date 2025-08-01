@@ -7,15 +7,15 @@
 
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { NewAppScreen } from "@react-native/new-app-screen";
-import { ThemeProvider, NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import "./global.css";
+import "../global.css";
 import { APIProvider } from "./share/api";
 import PageLoading from "./share/components/loading/page-loading";
 import { SplashProvider } from "./share/components/splash-provider";
-import { useThemeConfig } from "./share/hooks/use-theme-config";
 import { ToastProvider } from "./share/components/toast-provider";
+import { useThemeConfig } from "./share/hooks/use-theme-config";
 // import { KeyboardProvider } from "react-native-keyboard-controller";
 
 function App() {
