@@ -1,147 +1,161 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import eslintConfigPrettier from 'eslint-config-prettier';
+import importPlugin from 'eslint-plugin-import';
+import jest from 'eslint-plugin-jest';
+import perfectionist from 'eslint-plugin-perfectionist';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import testingLibrary from 'eslint-plugin-testing-library';
+import unicorn from 'eslint-plugin-unicorn';
 
-import { defineConfig, globalIgnores } from "eslint/config";
-import reactNativeConfig from "eslint-config-react-native";
-import i18nJsonPlugin from "eslint-plugin-i18n-json";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
-import reactCompiler from "eslint-plugin-react-compiler";
-import simpleImportSort from "eslint-plugin-simple-import-sort";
-import tailwind from "eslint-plugin-tailwindcss";
-import testingLibrary from "eslint-plugin-testing-library";
-// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member, import/namespace
-import eslintPluginUnicorn from "eslint-plugin-unicorn";
-import unusedImports from "eslint-plugin-unused-imports";
-import { configs, parser } from "typescript-eslint";
+const ERROR = 2;
+const OFF = 0;
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
-export default defineConfig([
-  globalIgnores([
-    "dist/*",
-    "node_modules",
-    "__tests__/",
-    "coverage",
-    ".vscode",
-    "docs/",
-    "cli/",
-    "react-native-env.d.ts",
-  ]),
-  reactNativeConfig,
-  eslintPluginPrettierRecommended,
-  ...tailwind.configs["flat/recommended"],
-  reactCompiler.configs.recommended,
+export default tseslint.config(
+  eslint.configs.recommended,
+  tseslint.configs.strictTypeChecked,
+  tseslint.configs.stylisticTypeChecked,
+  unicorn.configs.all,
+  perfectionist.configs['recommended-alphabetical'],
+  importPlugin.flatConfigs.react,
+  importPlugin.flatConfigs['react-native'],
+  importPlugin.flatConfigs.typescript,
+  react.configs.flat.all,
+  react.configs.flat['jsx-runtime'],
+  reactRefresh.configs.recommended,
+  testingLibrary.configs['flat/react'],
+  eslintConfigPrettier, // last
   {
-    plugins: {
-      "simple-import-sort": simpleImportSort,
-      unicorn: eslintPluginUnicorn,
-      "unused-imports": unusedImports,
-    },
-    rules: {
-      "max-params": ["error", 3],
-      "max-lines-per-function": ["error", 130],
-      "tailwindcss/classnames-order": [
-        "warn",
-        {
-          officialSorting: true,
-        },
-      ],
-      "tailwindcss/no-custom-classname": "off",
-      "react/display-name": "off",
-      "react/no-inline-styles": "off",
-      "react/destructuring-assignment": "off",
-      "react/require-default-props": "off",
-      "unicorn/filename-case": [
-        "error",
-        {
-          case: "kebabCase",
-          ignore: ["/android", "/ios"],
-        },
-      ],
-      "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "error",
-      "unused-imports/no-unused-imports": "error",
-      "unused-imports/no-unused-vars": [
-        "error",
-        {
-          argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-          caughtErrorsIgnorePattern: "^_",
-        },
-      ],
-      "import/prefer-default-export": "off",
-      "import/no-cycle": ["error", { maxDepth: "∞" }],
-      "prettier/prettier": ["error", { ignores: ["react-native-env.d.ts"] }],
-    },
-  },
-  {
-    files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
-      parser: parser,
+      globals: {
+        __DEV__: 'readonly', // define it as a global variable
+      },
       parserOptions: {
-        project: "./tsconfig.json",
-        sourceType: "module",
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
       },
     },
+    settings: {
+      'import/resolver': {
+        node: true,
+        typescript: true,
+      },
+      perfectionist: {
+        partitionByComment: true,
+        type: 'alphabetical',
+      },
+      react: {
+        version: 'detect',
+      },
+    },
+  },
+  {
+    ...reactHooks.configs.recommended,
+    plugins: {
+      'react-hooks': reactHooks,
+    },
     rules: {
-      ...configs.recommended.rules,
-      "@typescript-eslint/comma-dangle": "off",
-      "@typescript-eslint/consistent-type-imports": [
-        "warn",
+      ...reactHooks.configs.recommended.rules,
+      '@typescript-eslint/consistent-type-definitions': [ERROR, 'type'],
+      '@typescript-eslint/dot-notation': [ERROR, { allowKeywords: true }],
+      '@typescript-eslint/no-empty-function': OFF,
+      '@typescript-eslint/restrict-template-expressions': OFF,
+      'import/no-unresolved': OFF, // handled by TypeScript
+      'no-console': [ERROR, { allow: ['warn', 'error'] }],
+      'no-magic-numbers': [
+        ERROR,
+        { ignore: [-1, 0, 1, 2, 3, 4, 5, 6], ignoreArrayIndexes: true },
+      ],
+      'perfectionist/sort-imports': [
+        'error',
         {
-          prefer: "type-imports",
-          fixStyle: "inline-type-imports",
-          disallowTypeAnnotations: true,
+          customGroups: {
+            value: {
+              components: '@/components(/.+)?',
+              hooks: '@/hooks(/.+)?',
+              navigation: '@/navigation(/.+)?',
+              screens: '@/screens(/.+)?',
+              test: '@/test(/.+)?',
+              theme: '@/theme(/.+)?',
+              translations: '@/translations(/.+)?',
+            },
+          },
+          groups: [
+            'side-effect',
+            ['type', 'internal-type'],
+            ['builtin', 'external'],
+            ['theme', 'hooks', 'navigation', 'translations'],
+            ['components', 'screens'],
+            ['test'],
+            'internal',
+            'unknown',
+          ],
+          newlinesBetween: 'always',
+          type: 'alphabetical',
+        },
+      ],
+
+      'react-refresh/only-export-components': OFF,
+      'react/forbid-component-props': OFF,
+      'react/jsx-filename-extension': [ERROR, { extensions: ['.tsx', '.jsx'] }],
+      'react/jsx-max-depth': [ERROR, { max: 10 }],
+      'react/jsx-no-bind': OFF,
+      'react/jsx-no-literals': OFF,
+      'react/jsx-props-no-spreading': OFF,
+      'react/jsx-sort-props': OFF, // Handled by perfectionist
+      'react/no-multi-comp': OFF,
+      'react/no-unescaped-entities': OFF,
+      'react/require-default-props': [
+        ERROR,
+        {
+          forbidDefaultForRequired: true,
+          functions: 'defaultArguments',
+        },
+      ],
+      'unicorn/filename-case': OFF,
+      'unicorn/no-keyword-prefix': OFF,
+      'unicorn/no-useless-undefined': OFF,
+      'unicorn/prefer-top-level-await': 0, // not valid on RN for the moment
+      'unicorn/prevent-abbreviations': [
+        ERROR,
+        {
+          allowList: {
+            env: true,
+            Param: true,
+            props: true,
+            Props: true,
+          },
         },
       ],
     },
   },
   {
-    files: ["src/translations/*.json"],
-    plugins: { "i18n-json": i18nJsonPlugin },
-    processor: {
-      meta: { name: ".json" },
-      ...i18nJsonPlugin.processors[".json"],
-    },
+    files: ['**/theme/*.ts'],
     rules: {
-      ...i18nJsonPlugin.configs.recommended.rules,
-      "i18n-json/valid-message-syntax": [
-        2,
-        {
-          syntax: path.resolve(
-            __dirname,
-            "./scripts/i18next-syntax-validation.js",
-          ),
-        },
-      ],
-      "i18n-json/valid-json": 2,
-      "i18n-json/sorted-keys": [
-        2,
-        {
-          order: "asc",
-          indentSpaces: 2,
-        },
-      ],
-      "i18n-json/identical-keys": [
-        2,
-        {
-          filePath: path.resolve(__dirname, "./src/translations/en.json"),
-        },
-      ],
-      "prettier/prettier": [
-        0,
-        {
-          singleQuote: true,
-          endOfLine: "auto",
-        },
-      ],
+      'no-magic-numbers': OFF,
     },
   },
   {
-    files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-    plugins: { "testing-library": testingLibrary },
+    files: ['*.conf.js', '*.config.js', '*.setup.js'],
     rules: {
-      ...testingLibrary.configs.react.rules,
+      '@typescript-eslint/no-require-imports': OFF,
+      '@typescript-eslint/no-unsafe-assignment': OFF,
+      '@typescript-eslint/no-unsafe-call': OFF,
+      'no-undef': OFF,
+      'unicorn/prefer-module': OFF,
     },
   },
-]);
+  {
+    files: ['**/*.spec.{js,ts,jsx,tsx}', '**/*.test.{js,ts,jsx,tsx}'],
+    ...jest.configs['flat/recommended'],
+    rules: {
+      ...jest.configs['flat/recommended'].rules,
+    },
+  },
+  {
+    ignores: ['plugins/**'],
+  },
+);
