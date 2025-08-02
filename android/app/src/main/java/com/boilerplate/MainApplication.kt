@@ -35,9 +35,9 @@ class MainApplication : Application(), ReactApplication {
   override fun onCreate() {
     super.onCreate()
 
-    val sharedI18nUtilInstance = I18nUtil.getInstance()
-    sharedI18nUtilInstance.forceRTL(this, true)
-    sharedI18nUtilInstance.allowRTL(this, true)
+    val mI18nUtil = I18nUtil.instance
+    mI18nUtil.allowRTL(this, true)
+    mI18nUtil.forceRTL(this, true)
 
     loadReactNative(this)
   }
