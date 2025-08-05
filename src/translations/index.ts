@@ -1,8 +1,9 @@
 import 'intl-pluralrules';
 
-import type { Language } from '@/hooks/language/schema';
+import type { Language } from './schema';
+import type { InitOptions } from 'i18next'; // ✅ renamed to avoid type conflict
 
-import i18n, { InitOptions } from 'i18next';
+import * as i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { I18nManager } from 'react-native';
 
@@ -10,16 +11,17 @@ import en from './en.json';
 import fa from './fa.json';
 import { getLanguage } from './utils';
 
-export const defaultNS = 'boilerplate';
+export const defaultNS = 'translation';
 
 export const resources = {
-  en: en,
-  fa: fa,
+  en: { translation: en },
+  fa: { translation: fa },
 } as const satisfies Record<Language, unknown>;
 
 // i18n options
 const options: InitOptions = {
   compatibilityJSON: 'v4',
+  debug: __DEV__,
   defaultNS,
   fallbackLng: 'fa',
   interpolation: {
@@ -29,19 +31,13 @@ const options: InitOptions = {
   resources,
 };
 
-void i18n.use(initReactI18next).init(options);
+void i18next.use(initReactI18next).init(options);
 
-i18n.services.formatter?.add(
-  'capitalize',
-  (value: string) =>
-    value.charAt(0).toUpperCase() + value.slice(1).toLowerCase(),
-);
-
-const isRTL = i18n.dir() === 'rtl';
+const isRTL = i18next.dir() === 'rtl';
 
 I18nManager.allowRTL(isRTL);
 I18nManager.forceRTL(isRTL);
 
 export { isRTL };
 
-export { default } from 'i18next';
+export default i18next;

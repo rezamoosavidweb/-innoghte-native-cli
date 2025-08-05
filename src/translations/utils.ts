@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
 
 import type { Language, resources } from './resources';
 import type { RecursiveKeyOf } from './types';
@@ -27,10 +25,14 @@ export const LOCAL = 'local';
 export const getLanguage = () => storage.getString(LOCAL);
 
 export const translate = memoize(
-  (key: TxKeyPath, options = undefined) =>
-    i18n.t(key, options) as unknown as string,
-  (key: TxKeyPath, options: typeof TranslateOptions) =>
-    options ? key + JSON.stringify(options) : key,
+  (key: TxKeyPath, options = undefined) => {
+    return i18n.t(key, options) as unknown as string;
+  },
+  (key: TxKeyPath, options: typeof TranslateOptions) => {
+    const lang = i18n.language;
+    const opts = options ? JSON.stringify(options) : '';
+    return `${lang}:${key}:${opts}`;
+  },
 );
 
 export const changeLanguage = (lang: SupportedLanguages) => {

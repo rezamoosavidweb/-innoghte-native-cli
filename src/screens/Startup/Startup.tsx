@@ -1,7 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import { Button, ScrollView, Text, View } from 'react-native';
 
-import { Drawers, Paths } from '@/navigation/paths';
+import { Drawers, Paths } from '@/navigation/routes';
 import { RootStackParamList } from '@/navigation/types';
 
 type Props = StackScreenProps<RootStackParamList, Paths.Startup>;
