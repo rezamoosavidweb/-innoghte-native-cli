@@ -1,17 +1,11 @@
-//  https://github.com/infinitered/ignite/blob/master/boilerplate/app/i18n/i18n.ts
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export type RecursiveKeyOf<TObj extends object> = {
-  [TKey in keyof TObj & (string | number)]: RecursiveKeyOfHandleValue<
+  [TKey in keyof TObj & (number | string)]: RecursiveKeyOfHandleValue<
     TObj[TKey],
     `${TKey}`
   >;
-}[keyof TObj & (string | number)];
-
-type RecursiveKeyOfInner<TObj extends object> = {
-  [TKey in keyof TObj & (string | number)]: RecursiveKeyOfHandleValue<
-    TObj[TKey],
-    `['${TKey}']` | `.${TKey}`
-  >;
-}[keyof TObj & (string | number)];
+}[keyof TObj & (number | string)];
 
 type RecursiveKeyOfHandleValue<
   TValue,
@@ -19,5 +13,14 @@ type RecursiveKeyOfHandleValue<
 > = TValue extends any[]
   ? Text
   : TValue extends object
-    ? Text | `${Text}${RecursiveKeyOfInner<TValue>}`
+    ? `${Text}${RecursiveKeyOfInner<TValue>}` | Text
     : Text;
+
+type RecursiveKeyOfInner<TObj extends object> = {
+  [TKey in keyof TObj & (number | string)]: RecursiveKeyOfHandleValue<
+    TObj[TKey],
+    `.${TKey}` | `['${TKey}']`
+  >;
+}[keyof TObj & (number | string)];
+
+

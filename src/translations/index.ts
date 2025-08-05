@@ -6,26 +6,26 @@ import i18n, { InitOptions } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { I18nManager } from 'react-native';
 
-import en from './en-EN.json';
-import fa from './fa-IR.json';
+import en from './en.json';
+import fa from './fa.json';
 import { getLanguage } from './utils';
 
 export const defaultNS = 'boilerplate';
 
 export const resources = {
-  'en-EN': en,
-  'fa-IR': fa,
+  en: en,
+  fa: fa,
 } as const satisfies Record<Language, unknown>;
 
 // i18n options
 const options: InitOptions = {
   compatibilityJSON: 'v4',
   defaultNS,
-  fallbackLng: 'fa-IR',
+  fallbackLng: 'fa',
   interpolation: {
     escapeValue: false,
   },
-  lng: getLanguage() ?? 'fa-IR',
+  lng: getLanguage() ?? 'fa',
   resources,
 };
 
@@ -38,7 +38,6 @@ i18n.services.formatter?.add(
 );
 
 const isRTL = i18n.dir() === 'rtl';
-console.warn({ isRTL });
 
 I18nManager.allowRTL(isRTL);
 I18nManager.forceRTL(isRTL);

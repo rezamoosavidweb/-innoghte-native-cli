@@ -2,16 +2,16 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { Example, Home } from '@/screens';
 
-import { Paths } from './paths';
-import { DrawerParamList } from './types';
+import { Drawers } from './paths';
+import { RootDrawerParamList } from './types';
 
-const Drawer = createDrawerNavigator<DrawerParamList>();
+const Drawer = createDrawerNavigator<RootDrawerParamList>();
 
 export default function DrawerNavigation() {
   return (
-    <Drawer.Navigator initialRouteName={Paths.Home}>
-      <Drawer.Screen component={Example} name={Paths.Example} />
-      <Drawer.Screen component={Home} name={Paths.Home} />
+    <Drawer.Navigator initialRouteName={Drawers.Contact}>
+      <Drawer.Screen component={Example} name={Drawers.Contact} />
+      <Drawer.Screen component={Home} name={Drawers.Example} />
     </Drawer.Navigator>
   );
 }

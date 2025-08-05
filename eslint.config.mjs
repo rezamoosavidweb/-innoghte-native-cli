@@ -142,10 +142,18 @@ export default tseslint.config(
     files: ['*.conf.js', '*.config.js', '*.setup.js'],
     rules: {
       '@typescript-eslint/no-require-imports': OFF,
-      '@typescript-eslint/no-unsafe-assignment': OFF,
       '@typescript-eslint/no-unsafe-call': OFF,
       'no-undef': OFF,
       'unicorn/prefer-module': OFF,
+    },
+  },
+  {
+    files: ['**/*.ts','**/*.tsx'],
+    rules: {
+      '@typescript-eslint/no-unsafe-assignment': OFF,
+      '@typescript-eslint/no-unsafe-call': OFF,
+      '@typescript-eslint/no-unsafe-member-access': OFF,
+      'unicorn/prevent-abbreviations': OFF,
     },
   },
   {

@@ -3,10 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
- 
-/* eslint-disable unicorn/prevent-abbreviations */
+
 import type { Language, resources } from './resources';
 import type { RecursiveKeyOf } from './types';
 import type TranslateOptions from 'i18next';
@@ -18,7 +15,7 @@ import { I18nManager, NativeModules } from 'react-native';
 import { useMMKVString } from 'react-native-mmkv';
 import RNRestart from 'react-native-restart';
 
-import { SupportedLanguages } from '@/hooks/language/schema';
+import { SupportedLanguages } from '@/translations/schema';
 
 import { storage } from '../storage';
 
@@ -27,7 +24,7 @@ type DefaultLocale = typeof resources.en.translation;
 
 export const LOCAL = 'local';
 
-export const getLanguage = () => storage.getString(LOCAL); // 'Marc' getItem<Language | undefined>(LOCAL);
+export const getLanguage = () => storage.getString(LOCAL);
 
 export const translate = memoize(
   (key: TxKeyPath, options = undefined) =>
@@ -38,7 +35,7 @@ export const translate = memoize(
 
 export const changeLanguage = (lang: SupportedLanguages) => {
   i18n.changeLanguage(lang);
-  if (lang === SupportedLanguages.FA_IR) {
+  if (lang === SupportedLanguages.FA) {
     I18nManager.forceRTL(true);
   } else {
     I18nManager.forceRTL(false);
@@ -67,8 +64,8 @@ export const useSelectedLanguage = () => {
 
 export const toggleLanguage = () => {
   changeLanguage(
-    i18n.language === (SupportedLanguages.EN_EN as string)
-      ? SupportedLanguages.FA_IR
-      : SupportedLanguages.EN_EN,
+    i18n.language === (SupportedLanguages.EN as string)
+      ? SupportedLanguages.FA
+      : SupportedLanguages.EN,
   );
 };
