@@ -8,7 +8,7 @@ type Props = StackScreenProps<RootStackParamList, Paths.Startup>;
 
 function Startup({ navigation }: Props) {
   const handleNavigateToContact = () => {
-    navigation.navigate(Paths.Home, { screen: Drawers.Contact });
+    navigation.navigate(Paths.Drawer, { screen: Drawers.Example });
   };
 
   return (

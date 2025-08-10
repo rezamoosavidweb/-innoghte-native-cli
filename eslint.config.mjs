@@ -148,11 +148,13 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/*.ts','**/*.tsx'],
+    files: ['**/*.ts', '**/*.tsx'],
     rules: {
       '@typescript-eslint/no-unsafe-assignment': OFF,
       '@typescript-eslint/no-unsafe-call': OFF,
       '@typescript-eslint/no-unsafe-member-access': OFF,
+      'react/no-unstable-nested-components': OFF,
+      'unicorn/no-null': OFF,
       'unicorn/prevent-abbreviations': OFF,
     },
   },

@@ -1,4 +1,4 @@
-export { default as Drawer } from './Drawer';
-export { default as Example } from './Example/Example';
-export { default as Startup } from './Startup/Startup';
-export { default as Tabs } from './Tabs';
+export { default as Drawer } from './drawer';
+export { default as Example } from './example';
+export { default as Startup } from './startup';
+export { default as Tabs } from './tabs';
