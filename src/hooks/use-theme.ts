@@ -1,13 +1,20 @@
 // src/hooks/useTheme.ts
 import {
-    DarkTheme as _DarkTheme,
-    DefaultTheme,
-    type Theme,
+  DarkTheme as _DarkTheme,
+  DefaultTheme,
+  type Theme,
 } from '@react-navigation/native';
 
 import colors from '@/lib/colors';
 
 import { useThemeStore } from './use-theme-store';
+
+const fonts: Theme['fonts'] = {
+  bold: { fontFamily: 'On Regular', fontWeight: '700' },
+  heavy: { fontFamily: 'On Regular', fontWeight: '900' },
+  medium: { fontFamily: 'On Regular', fontWeight: '500' },
+  regular: { fontFamily: 'On Regular', fontWeight: '400' },
+};
 
 const DarkTheme: Theme = {
   ..._DarkTheme,
@@ -19,6 +26,7 @@ const DarkTheme: Theme = {
     primary: colors.primary[800],
     text: colors.charcoal[100],
   },
+  fonts,
 };
 
 const LightTheme: Theme = {
@@ -28,6 +36,7 @@ const LightTheme: Theme = {
     background: colors.white,
     primary: colors.primary[800],
   },
+  fonts,
 };
 
 export function useTheme() {
