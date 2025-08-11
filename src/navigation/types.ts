@@ -11,7 +11,12 @@ export type CombinedProps<S extends keyof RootDrawerParamList> =
   >;
 
 export type RootDrawerParamList = {
+  [Drawers.Albums]: undefined;
+  [Drawers.Courses]: undefined;
+  [Drawers.Events]: undefined;
   [Drawers.Example]: undefined;
+  [Drawers.LiveMeeting]: undefined;
+  [Drawers.SupportService]: undefined;
   [Drawers.Tabs]: undefined;
 };
 

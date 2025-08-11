@@ -150,10 +150,14 @@ export default tseslint.config(
   {
     files: ['**/*.ts', '**/*.tsx'],
     rules: {
+      '@typescript-eslint/no-unnecessary-condition': OFF,
+      '@typescript-eslint/no-unsafe-argument': OFF,
       '@typescript-eslint/no-unsafe-assignment': OFF,
       '@typescript-eslint/no-unsafe-call': OFF,
       '@typescript-eslint/no-unsafe-member-access': OFF,
+      '@typescript-eslint/prefer-nullish-coalescing': OFF,
       'react/no-unstable-nested-components': OFF,
+      'react/require-default-props': OFF,
       'unicorn/no-null': OFF,
       'unicorn/prevent-abbreviations': OFF,
     },
