@@ -5,7 +5,12 @@ import { Tabs } from '@/navigation/routes';
 import { RootTabsParamList } from '@/navigation/types';
 import { translate } from '@/translations/utils';
 
-import { CategoryIcon, FolderIcon, HomeIcon, ProfileIcon } from '@/components/icons';
+import {
+  CategoryIcon,
+  FolderIcon,
+  HomeIcon,
+  ProfileIcon,
+} from '@/components/icons';
 import ProtectedLink from '@/components/protected-link';
 
 import FAQsTab from './faqs';
@@ -16,18 +21,19 @@ import ProfileTab from './profile';
 const Tab = createBottomTabNavigator<RootTabsParamList>();
 
 export default function TabsNavigation() {
-  const { navigationTheme } = useTheme();
+  const { theme } = useTheme();
   return (
     <Tab.Navigator>
       <Tab.Screen
         component={HomeTab}
         name={Tabs.Home}
         options={{
+          headerShown: false,
           tabBarButtonTestID: 'home-tab',
           tabBarIcon: ({ color, focused }) => (
             <HomeIcon
               color={color}
-              focusPathColor={navigationTheme.colors.background}
+              focusPathColor={theme.colors.background}
               isFocused={focused}
             />
           ),
@@ -38,6 +44,7 @@ export default function TabsNavigation() {
         component={MyCoursesTab}
         name={Tabs.MyCourses}
         options={{
+          headerShown: false,
           tabBarButton: (props) => (
             <ProtectedLink targetRoute={Tabs.MyCourses} {...props} />
           ),
@@ -52,11 +59,12 @@ export default function TabsNavigation() {
         component={FAQsTab}
         name={Tabs.FAQs}
         options={{
+          headerShown: false,
           tabBarButtonTestID: 'category-tab',
           tabBarIcon: ({ color, focused }) => (
             <FolderIcon
               color={color}
-              focusPathColor={navigationTheme.colors.background}
+              focusPathColor={theme.colors.background}
               isFocused={focused}
             />
           ),
@@ -68,11 +76,9 @@ export default function TabsNavigation() {
         component={ProfileTab}
         name={Tabs.Profile}
         options={{
+          headerShown: false,
           tabBarButton: (props) => (
-            <ProtectedLink
-              targetRoute={Tabs.Profile}
-              {...props}
-            />
+            <ProtectedLink targetRoute={Tabs.Profile} {...props} />
           ),
           tabBarButtonTestID: 'profile-tab',
           tabBarIcon: ({ color, focused }) => (

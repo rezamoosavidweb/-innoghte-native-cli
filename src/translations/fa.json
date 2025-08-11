@@ -82,5 +82,10 @@
   "remaining_capacity": "ظرفیت باقی مانده",
   "author": "نویسنده",
   "work_from": "کاری از",
-  "author_speaker": "نویسنده وگوینده"
+  "author_speaker": "نویسنده وگوینده",
+  "status": "وضعیت",
+  "pastEvent": "برگزارشده",
+  "ongoingEvent": "درحال برگزاری",
+  "upcomingEvent": "برگزاری در آینده",
+  "more_information_register": "اطلاعات بیشتر وثبت نام"
 }

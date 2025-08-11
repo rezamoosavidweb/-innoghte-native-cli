@@ -81,6 +81,11 @@
   "cooperation": "Request for cooperation",
   "remaining_capacity": "Remaining capacity",
   "author": "Author",
-  "work_from":"From",
-  "author_speaker": "Author & Speaker"
+  "work_from": "From",
+  "author_speaker": "Author & Speaker",
+  "status": "Status",
+  "pastEvent": "Past",
+  "ongoingEvent": "Ongoing",
+  "upcomingEvent": "Upcoming",
+  "more_information_register": "Detail and Register"
 }

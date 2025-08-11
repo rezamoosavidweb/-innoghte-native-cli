@@ -3,7 +3,7 @@ import type { SvgProps } from "react-native-svg";
 import Svg, { Circle, Path } from "react-native-svg";
 
 export function AvatarIcon({ color = "#CCC", ...props }: SvgProps) {
-  return <Svg fill="none" height={24} viewBox="0 0 24 24" width={24} {...props}>
+  return <Svg fill="none" height={18} viewBox="0 0 18 18" width={18} {...props}>
     <Circle
       cx="9"
       cy="8.99951"

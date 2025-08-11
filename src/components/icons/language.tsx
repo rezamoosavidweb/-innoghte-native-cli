@@ -19,7 +19,6 @@ export function LanguageIcon({ ...props }: SvgProps) {
         fill="#192332"
       />
       <Text
-        // fontFamily="HelveticaNeueLTArabic-Bold, Helvetica Neue LT Arabic"
         fill="#FFF"
         fontSize={30}
         fontWeight="bold"

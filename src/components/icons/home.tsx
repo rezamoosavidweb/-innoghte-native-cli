@@ -2,7 +2,7 @@ import type { SvgProps } from 'react-native-svg';
 
 import Svg, { Path } from 'react-native-svg';
 
-import colors from '@/lib/colors';
+import { colors } from '@/lib/theme-config';
 
 type Props = {
   readonly focusPathColor?: string;

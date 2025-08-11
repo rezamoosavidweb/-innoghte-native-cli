@@ -1,6 +1,8 @@
 import { useId, useState } from 'react';
-import { I18nManager, Pressable, StyleSheet, View } from 'react-native';
+import { I18nManager, Pressable, StyleSheet } from 'react-native';
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg';
+
+import { View } from './base';
 
 type StarRatingProps = {
   readonly activeColor?: string;

@@ -1,29 +1,25 @@
-import type { SubmitHandler } from "react-hook-form";
+import type { SubmitHandler } from 'react-hook-form';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import {
-  KeyboardAvoidingView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-import * as z from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { KeyboardAvoidingView, StyleSheet } from 'react-native';
+import * as z from 'zod';
 
-import { Button, ControlledInput } from "@/components/share/base";
+import { Button, Text, View } from '@/components/base';
+import { ControlledInput } from '@/components/base';
 
 const schema = z.object({
   email: z
     .string({
-      required_error: "Email is required",
+      required_error: 'Email is required',
     })
-    .email("Invalid email format"),
+    .email('Invalid email format'),
   name: z.string().optional(),
   password: z
     .string({
-      required_error: "Password is required",
+      required_error: 'Password is required',
     })
-    .min(6, "Password must be at least 6 characters"),
+    .min(6, 'Password must be at least 6 characters'),
 });
 
 export type FormType = z.infer<typeof schema>;
@@ -92,31 +88,31 @@ export function LoginForm({ onSubmit = () => {} }: LoginFormProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
     padding: 16,
   },
   flex1: {
     flex: 1,
   },
   header: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: 24,
   },
   loginButton: {
-    backgroundColor: "#ef4444", // Tailwind red-500
+    backgroundColor: '#ef4444', // Tailwind red-500
     marginTop: 16,
   },
   subtitle: {
-    color: "#6b7280", // Tailwind gray-500
+    color: '#6b7280', // Tailwind gray-500
     marginBottom: 24,
     maxWidth: 300,
-    textAlign: "center",
+    textAlign: 'center',
   },
   title: {
     fontSize: 32,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     paddingBottom: 24,
-    textAlign: "center",
+    textAlign: 'center',
   },
 });

@@ -1,4 +1,7 @@
-import { StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+
+import { Text } from './Text';
+import { View } from './View';
 
 type Props = {
   readonly containerStyle?: ViewStyle;

@@ -1,17 +1,12 @@
-// MyCourses.tsx
 import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ReactNode } from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 
+import { Drawers, Paths } from '@/navigation/routes';
+import { RootScreenProps } from '@/navigation/types';
 import { translate } from '@/translations/utils';
 
+import { Text, View } from '@/components/base';
 import {
   ArrowRightIcon,
   CalenderIcon,
@@ -20,26 +15,18 @@ import {
   HeartIcon,
   MusicIcon,
 } from '@/components/icons';
-import { Drawers, Paths } from '@/navigation/routes';
-import { Drawer } from '@/screens';
+import { SPACING } from '@/lib/theme-config';
 
 type MenuItemProps = {
   readonly icon: ReactNode;
   readonly onPress: () => void;
   readonly title: string;
 };
-type MyCoursesNavProp = NativeStackNavigationProp<MyCoursesStackParamList>;
-type MyCoursesStackParamList = {
-  Albums: undefined;
-  Courses: undefined;
-  Events: undefined;
-  LiveMeeting: undefined;
-  SupportService: undefined;
-};
+
+type NavigationType = RootScreenProps<Paths.Drawer>['navigation'];
 
 export default function MyCourses() {
-  const navigation = useNavigation<MyCoursesNavProp>();
-
+  const navigation = useNavigation<NavigationType>();
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -53,28 +40,30 @@ export default function MyCourses() {
         <MenuItem
           icon={<MusicIcon />}
           onPress={() => {
-            navigation.navigate('Albums');
+            navigation.navigate(Paths.Drawer, { screen: Drawers.Albums });
           }}
           title={translate('albums')}
         />
         <MenuItem
           icon={<GlobalUserIcon />}
           onPress={() => {
-            navigation.navigate('LiveMeeting');
+            navigation.navigate(Paths.Drawer, { screen: Drawers.LiveMeeting });
           }}
           title={translate('live_meeting')}
         />
         <MenuItem
           icon={<HeartIcon />}
           onPress={() => {
-            navigation.navigate('SupportService');
+            navigation.navigate(Paths.Drawer, {
+              screen: Drawers.SupportService,
+            });
           }}
           title={translate('support_services')}
         />
         <MenuItem
           icon={<CalenderIcon />}
           onPress={() => {
-            navigation.navigate('Events');
+            navigation.navigate(Paths.Drawer, { screen: Drawers.Events });
           }}
           title={translate('events')}
         />
@@ -88,7 +77,7 @@ function MenuItem({ icon, onPress, title }: MenuItemProps) {
       <View style={styles.row}>
         <View style={styles.rowWithGap}>
           {icon}
-          <Text style={styles.title}>{title}</Text>
+          <Text>{title}</Text>
         </View>
         <ArrowRightIcon />
       </View>
@@ -99,12 +88,11 @@ function MenuItem({ icon, onPress, title }: MenuItemProps) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    gap: 12,
-    marginTop: 40,
-    paddingHorizontal: 24,
+    gap: SPACING.md,
+    paddingHorizontal: SPACING.xl,
   },
   menuItem: {
-    paddingVertical: 12,
+    paddingVertical: SPACING.md,
     width: '100%',
   },
   row: {
@@ -116,10 +104,6 @@ const styles = StyleSheet.create({
   rowWithGap: {
     alignItems: 'center',
     flexDirection: 'row',
-    gap: 8,
-  },
-  title: {
-    color: '#000',
-    fontSize: 16,
+    gap: SPACING.sm,
   },
 });

@@ -1,29 +1,16 @@
-import type { SvgProps } from "react-native-svg";
+import type { SvgProps } from 'react-native-svg';
 
-import { StyleSheet } from "react-native";
-import Svg, { Path } from "react-native-svg";
+import Svg, { Path } from 'react-native-svg';
 
-import { isRTL } from "@/translations";
-
-export function ArrowRightIcon({
-  color = "#CCC",
-  style,
-  ...props
-}: SvgProps) {
-  return <Svg
-    fill="none"
-    height={14}
-    viewBox="0 0 7 14"
-    width={7}
-    {...props}
-    style={StyleSheet.flatten([
-      style,
-      { transform: [{ scaleX: isRTL ? -1 : 1 }] },
-    ])}
-  >
-    <Path
-      d="M.872 13.101a.874.874 0 0 0 .621-.253l5.252-5.253a.875.875 0 0 0 0-1.234L1.493 1.11A.875.875 0 0 0 .26 2.343l4.63 4.63-4.63 4.632A.876.876 0 0 0 .872 13.1Z"
-      fill={color}
-    />
-  </Svg>
+export function ArrowRightIcon({ color = '#CCC', ...props }: SvgProps) {
+  return (
+    <Svg fill="none" height={18} viewBox="0 0 22 18" width={22} {...props}>
+      <Path
+        clipRule="evenodd"
+        d="M12.4449 0.321777L10.7988 1.97494L16.6823 7.83278H0.840088V10.1661H16.6811L10.7988 16.0251L12.4449 17.6783L21.1599 8.99944L12.4449 0.321777Z"
+        fill={color}
+        fillRule="evenodd"
+      />
+    </Svg>
+  );
 }

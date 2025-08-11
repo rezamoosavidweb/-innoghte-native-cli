@@ -1,28 +1,30 @@
 import { useQuery } from '@tanstack/react-query';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 
 import { translate } from '@/translations/utils';
 
-import { Button } from '@/components/base';
-import { CoinsIcon, StarIcon, TicketIcon } from '@/components/icons';
-import Card from '@/components/product-card/Card';
+import { Button, Text, View } from '@/components/base';
+import { CoinsIcon, TicketIcon } from '@/components/icons';
+import Card from '@/components/product-card';
 import CardRow from '@/components/product-card/CardRow';
 import ProductType from '@/components/ProductType';
 
-import { fetchCoursesFake } from '@/lib/@fake-db/courses';
+import { fetchAlbumsFake } from '@/lib/@fake-db/albums';
 import { purchasedCourses } from '@/lib/@fake-db/purchased';
-import { convertNumber, convertPrice } from '@/utils/numbers';
+import { FONT_SIZES, SPACING } from '@/lib/theme-config';
+import { convertPrice } from '@/utils/numbers';
 
 const CONVERT_NUMBER_VALUE = 10;
-export default function Courses() {
+export default function Albums() {
   const { data, isFetching } = useQuery({
     queryFn: async () => {
-      const res = await fetchCoursesFake();
+      const res = await fetchAlbumsFake();
       return res;
     },
-    queryKey: ['courses'],
+    queryKey: ['albums'],
   });
-  if (isFetching) return <Text>Loading courses ...</Text>;
+  if (isFetching)
+    return <Text style={{ fontSize: FONT_SIZES.xxl }}>Loading albums ...</Text>;
 
   return (
     <ScrollView>
@@ -41,11 +43,6 @@ export default function Courses() {
                   value={<ProductType isPackage={!!el?.package} />}
                 />
                 <CardRow
-                  icon={<StarIcon />}
-                  title="chapters_count"
-                  value={convertNumber(el?.count_chapters ?? 0)}
-                />
-                <CardRow
                   icon={<CoinsIcon />}
                   title="price"
                   value={convertPrice(el?.price ?? 0 / CONVERT_NUMBER_VALUE)}
@@ -53,11 +50,15 @@ export default function Courses() {
               </View>
               <View style={styles.buttonRow}>
                 {purchasedCourses?.includes(el?.id) ? (
-                  <Button label={translate('show')} />
+                  <Button fullWidth label={translate('show')} />
                 ) : (
                   <>
-                    <Button label={translate('more_information')} />
-                    <Button label={translate('buy')} />
+                    <Button
+                      flex={1}
+                      label={translate('more_information')}
+                      variant="outlined"
+                    />
+                    <Button color="success" flex={1} label={translate('buy')} />
                   </>
                 )}
               </View>
@@ -72,19 +73,17 @@ export default function Courses() {
 const styles = StyleSheet.create({
   buttonRow: {
     flexDirection: 'row',
-    gap: 12,
-    marginTop: 20,
+    gap: SPACING.md,
+    marginTop: SPACING.md,
   },
   cardContent: {
-    gap: 12,
-    paddingTop: 12,
+    gap: SPACING.md,
+    paddingTop: SPACING.md,
     width: '100%',
   },
   container: {
-    gap: 10,
-    paddingHorizontal: 24,
-  },
-  flex1: {
-    flex: 1,
+    gap: SPACING.md,
+    paddingHorizontal: SPACING['2xl'],
+    paddingVertical: SPACING['2xl'],
   },
 });

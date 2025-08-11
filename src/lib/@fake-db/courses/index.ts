@@ -145,7 +145,7 @@ export const courses = [
   },
 ];
 
-const SLEEP_DURATION = 3000;
+const SLEEP_DURATION = 1000;
 export function fetchCoursesFake(): Promise<typeof courses> {
   return new Promise((resolve) => {
     setTimeout(() => {

@@ -8,6 +8,7 @@ export * from "./call";
 export * from "./caret-down";
 export * from "./category";
 export * from "./checked-shield";
+export * from "./chevron";
 export * from "./coins";
 export * from "./cooperation";
 export * from "./copy";

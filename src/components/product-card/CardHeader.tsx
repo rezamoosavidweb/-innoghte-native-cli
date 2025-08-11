@@ -1,20 +1,22 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet } from 'react-native';
 
-import Images from "@/lib/images";
+import Images from '@/lib/images';
+import { BORDER_RADIUS, FONT_SIZES, SPACING } from '@/lib/theme-config';
 
-import Rate from "../Rate";
+import { Text, View } from '../base';
+import Rate from '../Rate';
 
 type Props = {
   readonly imageUrl?: string;
   readonly title: string;
-}
+};
 
 export default function CardHeader({ imageUrl, title }: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.left}>
         <Text style={styles.title}>{title}</Text>
-        <Rate rating={2.6} starSize={12} />
+        <Rate rating={5} starSize={16} />
       </View>
 
       <Image
@@ -27,23 +29,22 @@ export default function CardHeader({ imageUrl, title }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    borderBottomColor: "#D1D5DB", // gray-400
     borderBottomWidth: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingBottom: 12,
+    borderStyle:"dashed",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingBottom: SPACING.md,
   },
   image: {
-    borderRadius: 8,
+    borderRadius: BORDER_RADIUS.md,
     height: 64,
-    width: 64, // size-16 (16*4 = 64)
+    width: 64,
   },
   left: {
-    flexDirection: "column",
-    gap: 12, // gap-3 (3*4)
+    flexDirection: 'column',
+    gap: SPACING.md,
   },
   title: {
-    fontSize: 24, // text-2xl
-    fontWeight: "600",
+    fontSize: FONT_SIZES.xxl,
   },
 });

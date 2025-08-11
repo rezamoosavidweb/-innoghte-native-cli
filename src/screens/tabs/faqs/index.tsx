@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { Text, View } from 'react-native';
+
+import { Text, View } from '@/components/base';
 
 import { request } from '@/services';
 function FAQsTab() {
@@ -7,7 +8,7 @@ function FAQsTab() {
     queryFn: async () => {
       try {
         const res = await request.get<object[]>('posts').json();
-        console.log({ data2: res });
+
         return res;
       } catch (error_) {
         console.error('Fetch error:', error_);
