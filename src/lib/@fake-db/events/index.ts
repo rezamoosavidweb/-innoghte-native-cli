@@ -369,7 +369,7 @@ export const events = [
     title_fa: 'ریتریت جاشوا تری',
   },
 ];
-
+export type EventType = (typeof events)[0];
 const SLEEP_DURATION = 1000;
 export function fetchEventsFake(): Promise<typeof events> {
   return new Promise((resolve) => {

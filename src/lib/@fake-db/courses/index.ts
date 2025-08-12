@@ -145,6 +145,8 @@ export const courses = [
   },
 ];
 
+export type CourseType = typeof courses[0]
+
 const SLEEP_DURATION = 1000;
 export function fetchCoursesFake(): Promise<typeof courses> {
   return new Promise((resolve) => {

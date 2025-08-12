@@ -10,10 +10,10 @@ import { translate, TxKeyPath } from '@/translations/utils';
 
 import BackButton from '@/components/BackButton';
 import { Example, Tabs } from '@/screens';
-import Albums from '@/screens/tabs/my-courses/Albums';
-import Courses from '@/screens/tabs/my-courses/Courses';
-import Events from '@/screens/tabs/my-courses/Events';
-import LiveMeeting from '@/screens/tabs/my-courses/LiveMeeting';
+import Albums from '@/screens/tabs/my-courses/albums';
+import Courses from '@/screens/tabs/my-courses/courses';
+import Events from '@/screens/tabs/my-courses/events';
+import LiveMeeting from '@/screens/tabs/my-courses/live-meeting';
 
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
 

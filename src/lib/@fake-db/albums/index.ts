@@ -141,6 +141,7 @@ export const albums = [
   },
 ];
 
+export type AlbumType = (typeof albums)[0];
 const SLEEP_DURATION = 1000;
 export function fetchAlbumsFake(): Promise<typeof albums> {
   return new Promise((resolve) => {
