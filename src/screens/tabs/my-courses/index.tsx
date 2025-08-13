@@ -8,13 +8,14 @@ import { translate } from '@/translations/utils';
 
 import { Text, View } from '@/components/base';
 import {
-  ArrowRightIcon,
   CalenderIcon,
+  ChevronIcon,
   DegreeHatIcon,
   GlobalUserIcon,
   HeartIcon,
   MusicIcon,
 } from '@/components/icons';
+
 import { SPACING } from '@/lib/theme-config';
 
 type MenuItemProps = {
@@ -79,7 +80,7 @@ function MenuItem({ icon, onPress, title }: MenuItemProps) {
           {icon}
           <Text>{title}</Text>
         </View>
-        <ArrowRightIcon />
+        <ChevronIcon />
       </View>
     </TouchableOpacity>
   );
