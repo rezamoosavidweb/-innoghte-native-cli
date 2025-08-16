@@ -29,6 +29,7 @@ export * from "./hossein";
 export * from "./language";
 export * from "./logout";
 export * from "./meditation";
+export * from "./message-lock";
 export * from "./music";
 export * from "./outline-question";
 export * from "./profile";

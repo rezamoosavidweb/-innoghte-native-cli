@@ -14,9 +14,6 @@ import { menus } from '@/lib/drawer';
 
 import Divider from './Divider';
 
-// --------------------
-// Custom Drawer Content
-// --------------------
 export default function CustomDrawerContent(
   props: DrawerContentComponentProps,
 ) {
@@ -30,7 +27,7 @@ export default function CustomDrawerContent(
     <DrawerContentScrollView {...props}>
       {menus?.map((el) => (
         <Fragment key={el?.id}>
-          <Divider tx={el?.label as TxKeyPath} />
+          <Divider label={el?.label as TxKeyPath} />
           {el?.children?.map((item) => {
             const Icon = item?.icon;
             const isActive = pathname === item?.href;
