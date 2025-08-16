@@ -26,7 +26,7 @@ const genOptions = (title: TxKeyPath): DrawerNavigationOptions => ({
 
 export default function DrawerNavigation() {
   return (
-    <Drawer.Navigator initialRouteName={Drawers.Tabs}>
+    <Drawer.Navigator  initialRouteName={Drawers.Tabs}>
       <Drawer.Screen component={Tabs} name={Drawers.Tabs} />
       <Drawer.Screen component={Example} name={Drawers.Example} />
       <Drawer.Screen

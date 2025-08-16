@@ -59,7 +59,8 @@ export function useTheme() {
   const variant = useThemeStore((state) => state.theme);
 
   return {
-    theme: variant === 'dark' ? DarkTheme : LightTheme,
+    // theme: variant === 'dark' ? DarkTheme : LightTheme,
+    theme: DarkTheme,
     variant,
   };
 }
