@@ -1,152 +1,237 @@
-import { type ReactNode, useEffect, useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+/* eslint-disable react/jsx-no-constructed-context-values */
+import type { PropsWithChildren } from 'react';
+import type { ViewProps } from 'react-native';
+import type { AnimatedProps } from 'react-native-reanimated';
+
+import { createContext, useContext, useState } from 'react';
+import { Pressable } from 'react-native';
 import Animated, {
+  FadeIn,
+  FadeOut,
+  LinearTransition,
   useAnimatedStyle,
-  useSharedValue,
-  withTiming,
+  useDerivedValue,
+  withSpring,
 } from 'react-native-reanimated';
 
-import { useTheme } from '@/hooks';
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-import { BORDER_RADIUS, SPACING } from '@/lib/theme-config';
+const AccordionContext = createContext({
+  accordionIsOpen: () => {},
+  isOpen: false,
+});
 
-import HtmlViewer from '../HtmlViewver';
-import { ChevronIcon } from '../icons';
-import { Collapse } from './Collapse';
+// type AccordionProvider = ContextType<typeof AccordionContext>;
+type AnimatedComponentProps = PropsWithChildren<AnimatedProps<ViewProps>>;
 
-export default function Accordions({
-  list,
-}: {
-  readonly list: { content: ReactNode; id: number; trigger: ReactNode }[];
-}) {
-  const { theme } = useTheme();
-  const [openIds, setOpenIds] = useState<number[]>([-1]);
+// Internal Hook
+const useAccordion = () => {
+  const context = useContext(AccordionContext);
 
-  const onPress = (id: number) => {
-    setOpenIds((prev) => (prev.includes(id) ? [] : [id]));
-  };
+  if (!context) {
+    throw new Error('useAccordion must be used within a Accordion.Provider');
+  }
 
-  return (
-    <View style={styles.container}>
-      {list.map((el) => {
-        const isActive = openIds.includes(el.id);
-        return (
-          <Pressable
-            key={el.id}
-            onPress={() => {
-              onPress(el.id);
-            }}
-            style={[
-              styles.item,
-              {
-                backgroundColor: theme.colors.card,
-                borderColor: theme.colors.border,
-              },
-            ]}
-          >
-            {typeof el.trigger === 'string' ? (
-              <View style={styles.header}>
-                <View style={styles.headerText}>
-                  <HtmlViewer
-                    baseStyle={{ color: theme.colors.text }}
-                    htmlContent={el.trigger}
-                    offset={1000}
-                  />
-                </View>
-                <Arrow active={isActive} />
-              </View>
-            ) : (
-              el.trigger
-            )}
+  return context;
+};
 
-            <View style={styles.content}>
-              <AccordionContent content={el.content} open={isActive} />
-            </View>
-          </Pressable>
-        );
-      })}
-    </View>
-  );
+function Always({ children, ...rest }: AnimatedComponentProps) {
+  return <Content {...rest}>{children}</Content>;
 }
 
-function AccordionContent({
-  content,
-  open,
-}: {
-  readonly content: ReactNode;
-  readonly open: boolean;
-}) {
-  const { theme } = useTheme();
-  return (
-    <Collapse isExpanded={open} viewKey="Accordion">
-      {typeof content === 'string' ? (
-        <View
-          style={[
-            styles.htmlContainer,
-            { borderTopColor: theme.colors.border },
-          ]}
-        >
-          <HtmlViewer
-            baseStyle={{ color: theme.colors.text }}
-            htmlContent={content}
-            offset={132}
-          />
-        </View>
-      ) : (
-        content
-      )}
-    </Collapse>
-  );
+function Collapsed({ children, ...rest }: AnimatedComponentProps) {
+  const { isOpen } = useAccordion();
+
+  if (isOpen) {
+    return;
+  }
+
+  return <Content {...rest}>{children}</Content>;
 }
-const ACTIVE_ANGLE = -90;
-function Arrow({ active }: { readonly active?: boolean }) {
-  const rotation = useSharedValue(0);
 
-  const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ rotate: `${rotation.value}deg` }],
-  }));
+const SPRING_DAMPING = 80;
+const SPRING_STIFFNESS = 1000;
+const ROTATION = 90;
 
-  useEffect(() => {
-    rotation.value = withTiming(active ? ACTIVE_ANGLE : 0, { duration: 300 });
-  }, [active, rotation]);
-
+function Content({ children, style, ...rest }: AnimatedComponentProps) {
   return (
-    <Animated.View style={animatedStyle}>
-      <ChevronIcon color="#ccc" height={12} width={12} />
+    <Animated.View
+      entering={FadeIn.springify()
+        .damping(SPRING_DAMPING)
+        .stiffness(SPRING_STIFFNESS)}
+      exiting={FadeOut.springify()
+        .damping(SPRING_DAMPING)
+        .stiffness(SPRING_STIFFNESS)}
+      layout={LinearTransition.springify()
+        .damping(SPRING_DAMPING)
+        .stiffness(SPRING_STIFFNESS)}
+      style={[style, { overflow: 'hidden' }]}
+      {...rest}
+    >
+      {children}
     </Animated.View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    gap: SPACING.base,
-    justifyContent: 'center',
-    padding: SPACING.base,
-  },
-  content: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  header: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  headerText: {
-    flex: 1,
-    maxWidth: '90%',
-  },
-  htmlContainer: {
-    borderTopWidth: 1,
-    marginTop: SPACING.base,
-    paddingTop: SPACING.base,
-  },
-  item: {
-    borderRadius: BORDER_RADIUS.md,
-    borderWidth: 1,
-    overflow: 'hidden',
-    padding: SPACING.base,
-  },
-});
+function Expanded({ children, ...rest }: AnimatedComponentProps) {
+  const { isOpen } = useAccordion();
+
+  if (!isOpen) {
+    return;
+  }
+
+  return <Content {...rest}>{children}</Content>;
+}
+
+function Header({ children }: { readonly children: React.ReactNode }) {
+  const { accordionIsOpen } = useAccordion();
+
+  return (
+    <AnimatedPressable
+      onPress={() => {
+        accordionIsOpen();
+      }}
+    >
+      {children}
+    </AnimatedPressable>
+  );
+}
+function Icon({
+  children,
+  rotation = 'clockwise',
+}: {
+  readonly children: React.ReactNode;
+  readonly rotation?: 'clockwise' | 'counter-clockwise';
+}) {
+  const { isOpen } = useAccordion();
+  const rotate = useDerivedValue(() => {
+    return withSpring(
+      isOpen ? (rotation === 'clockwise' ? -1 : 1) * ROTATION : 0,
+      {
+        damping: SPRING_DAMPING,
+        stiffness: SPRING_STIFFNESS,
+      },
+    );
+  }, [isOpen, rotation]);
+
+  const stylez = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          rotate: `${rotate.value}deg`,
+        },
+      ],
+    };
+  });
+
+  return (
+    <Animated.View
+      layout={LinearTransition.springify()
+        .damping(SPRING_DAMPING)
+        .stiffness(SPRING_STIFFNESS)}
+      style={[
+        {
+          alignItems: 'center',
+          height: 20,
+          justifyContent: 'center',
+          width: 20,
+        },
+        stylez,
+      ]}
+    >
+      {children}
+    </Animated.View>
+  );
+}
+
+function Provider({
+  children,
+  isOpen: initialIsOpen,
+  onChange,
+  style,
+  ...rest
+}: {
+  readonly children: React.ReactNode;
+  readonly isOpen?: boolean;
+  readonly onChange?: (value: boolean) => void;
+} & AnimatedProps<ViewProps>) {
+  const [isOpen, setIsOpen] = useState(!!initialIsOpen);
+  return (
+    <AccordionContext.Provider
+      value={{
+        accordionIsOpen: () => {
+          onChange?.(!isOpen);
+          setIsOpen((prev) => {
+            return !prev;
+          });
+        },
+        isOpen,
+      }}
+    >
+      <Animated.View
+        layout={LinearTransition.springify()
+          .damping(SPRING_DAMPING)
+          .stiffness(SPRING_STIFFNESS)}
+        style={[style, { overflow: 'hidden' }]}
+        {...rest}
+      >
+        {children}
+      </Animated.View>
+    </AccordionContext.Provider>
+  );
+}
+
+function Sibling({ children, ...rest }: AnimatedComponentProps) {
+  return (
+    <Animated.View
+      layout={LinearTransition.springify()
+        .damping(SPRING_DAMPING)
+        .stiffness(SPRING_STIFFNESS)}
+      {...rest}
+    >
+      {children}
+    </Animated.View>
+  );
+}
+
+export const Accordion = {
+  /**
+   * The main component that will handle the state of the accordion.
+   *
+   * @param isOpen boolean
+   * @param onChange (value: boolean) => void
+   */
+  Accordion: Provider,
+  /**
+   * The header of the accordion.
+   */
+  Header,
+  /**
+   * The component that will wrap any children and it will apply a rotation to it.
+   *
+   * @param children
+   * @param rotation clockwise | counter-clockwise
+   */
+  HeaderIcon: Icon,
+  /**
+   * This is the content that will be displayed when the accordion is open
+   */
+  Expanded,
+  /**
+   * This is the content that will be displayed when the accordion is closed
+   */
+  Collapsed,
+  /**
+   * This is the content that will always be displayed
+   */
+  Always,
+  /**
+   *
+   * This is a component that will add the layout transition to any
+   * sibling components. Useful when you are rendering other components
+   * that are not direct children of the Accordion component.
+   */
+  Sibling,
+};
+
+export default Accordion;

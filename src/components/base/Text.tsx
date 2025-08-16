@@ -20,6 +20,7 @@ export function Text({
     <TextComponent
       style={[
         { ...theme.fonts[weight], fontSize: FONT_SIZES.base },
+        { borderColor: primary ? theme.colors.primary : theme.colors.border },
         { color: primary ? theme.colors.primary : theme.colors.text },
         style,
       ]}
