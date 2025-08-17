@@ -34,21 +34,21 @@ export default function MyCourses() {
         <MenuItem
           icon={<DegreeHatIcon />}
           onPress={() => {
-            navigation.navigate(Paths.Drawer, { screen: Drawers.Courses });
+            navigation.navigate(Paths.Drawer, { screen: Drawers.MyCourses });
           }}
           title={translate('courses')}
         />
         <MenuItem
           icon={<MusicIcon />}
           onPress={() => {
-            navigation.navigate(Paths.Drawer, { screen: Drawers.Albums });
+            navigation.navigate(Paths.Drawer, { screen: Drawers.MyAlbums });
           }}
           title={translate('albums')}
         />
         <MenuItem
           icon={<GlobalUserIcon />}
           onPress={() => {
-            navigation.navigate(Paths.Drawer, { screen: Drawers.LiveMeeting });
+            navigation.navigate(Paths.Drawer, { screen: Drawers.MyLiveMeeting });
           }}
           title={translate('live_meeting')}
         />
@@ -64,7 +64,7 @@ export default function MyCourses() {
         <MenuItem
           icon={<CalenderIcon />}
           onPress={() => {
-            navigation.navigate(Paths.Drawer, { screen: Drawers.Events });
+            navigation.navigate(Paths.Drawer, { screen: Drawers.MyEvents });
           }}
           title={translate('events')}
         />

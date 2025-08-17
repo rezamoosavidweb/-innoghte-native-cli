@@ -1,3 +1,9 @@
+import { SvgProps } from 'react-native-svg';
+
+import { Drawers } from '@/navigation/routes';
+import { RootDrawerParamList } from '@/navigation/types';
+import { TxKeyPath } from '@/translations/utils';
+
 import {
   CalenderIcon,
   CooperationIcon,
@@ -14,31 +20,44 @@ import {
   UserHeadphoneIcon,
 } from '@/components/icons';
 
-export const menus = [
+export type MenuItem = {
+  disabled: boolean;
+  icon: React.ComponentType<SvgProps>;
+  id: number;
+  label: TxKeyPath;
+  screen: keyof RootDrawerParamList;
+  show: boolean;
+};
+export type MenuSection = {
+  children: MenuItem[];
+  id: number;
+  label: '' | TxKeyPath;
+};
+export const menus: MenuSection[] = [
   {
     children: [
       {
         disabled: false,
-        href: '/my-courses/courses',
         icon: DegreeHatIcon,
         id: 11,
         label: 'courses',
+        screen: Drawers.Courses,
         show: true,
       },
       {
         disabled: false,
-        href: '/my-courses/albums',
         icon: MusicIcon,
         id: 12,
         label: 'albums',
+        screen: Drawers.Albums,
         show: true,
       },
       {
         disabled: false,
-        href: '/my-courses/live-meeting',
         icon: GlobalUserIcon,
         id: 13,
         label: 'live_meeting',
+        screen: Drawers.LiveMeeting,
         show: true,
       },
     ],
@@ -49,42 +68,42 @@ export const menus = [
     children: [
       {
         disabled: false,
-        href: '/experience/podcast',
         icon: UserHeadphoneIcon,
         id: 21,
         label: 'podcast',
+        screen: Drawers.Podcast,
         show: true,
       },
       {
         disabled: false,
-        href: '/experience/meditation',
         icon: MeditationIcon,
         id: 32,
         label: 'meditation',
+        screen: Drawers.Meditation,
         show: true,
       },
       {
         disabled: false,
-        href: '/experience/reading',
         icon: CopyIcon,
         id: 23,
         label: 'reading',
+        screen: Drawers.Reading,
         show: true,
       },
       {
         disabled: false,
-        href: '/experience/listening',
         icon: HeadphoneIcon,
         id: 24,
         label: 'listening',
+        screen: Drawers.Listening,
         show: true,
       },
       {
         disabled: false,
-        href: '/experience/writing',
         icon: EditIcon,
         id: 25,
         label: 'writing',
+        screen: Drawers.Writing,
         show: true,
       },
     ],
@@ -95,10 +114,10 @@ export const menus = [
     children: [
       {
         disabled: false,
-        href: '/private-consultation',
         icon: MessageLockIcon,
         id: 31,
         label: 'private_consultation',
+        screen: Drawers.PrivateConsultation,
         show: true,
       },
     ],
@@ -109,34 +128,34 @@ export const menus = [
     children: [
       {
         disabled: false,
-        href: '/my-courses/events',
         icon: CalenderIcon,
         id: 41,
         label: 'events',
+        screen: Drawers.Events,
         show: true,
       },
       {
         disabled: false,
-        href: '/donation',
         icon: SmileHeartIcon,
         id: 42,
         label: 'donation',
+        screen: Drawers.Donation,
         show: true,
       },
       {
         disabled: false,
-        href: '/about-us',
         icon: HosseinIcon,
         id: 43,
         label: 'about_us',
+        screen: Drawers.AboutUs,
         show: true,
       },
       {
         disabled: false,
-        href: '/cooperation',
         icon: CooperationIcon,
         id: 44,
-        label: 'cooperation',
+        label: 'collaboration',
+        screen: Drawers.Collaboration,
         show: true,
       },
     ],

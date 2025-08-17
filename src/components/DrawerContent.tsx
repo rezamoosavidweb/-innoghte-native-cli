@@ -8,17 +8,21 @@ import { Fragment } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@/hooks';
+import { Paths } from '@/navigation/routes';
+import { RootScreenProps } from '@/navigation/types';
 import { translate, TxKeyPath } from '@/translations/utils';
 
 import { menus } from '@/lib/drawer';
 
 import Divider from './Divider';
 
+type NavigationType = RootScreenProps<Paths.Drawer>['navigation'];
+
 export default function CustomDrawerContent(
   props: DrawerContentComponentProps,
 ) {
   const route = useRoute();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationType>();
   const { theme } = useTheme();
 
   const pathname = route.name;
@@ -30,7 +34,7 @@ export default function CustomDrawerContent(
           <Divider label={el?.label as TxKeyPath} />
           {el?.children?.map((item) => {
             const Icon = item?.icon;
-            const isActive = pathname === item?.href;
+            const isActive = pathname === item?.screen;
 
             return (
               <DrawerItem
@@ -46,7 +50,9 @@ export default function CustomDrawerContent(
                   },
                 ]}
                 onPress={() => {
-                  navigation.navigate(item?.href);
+                  navigation.navigate(Paths.Drawer, {
+                    screen: item?.screen,
+                  });
                 }}
                 style={[
                   styles.drawerItem,

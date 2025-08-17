@@ -11,13 +11,26 @@ export type CombinedProps<S extends keyof RootDrawerParamList> =
   >;
 
 export type RootDrawerParamList = {
+  [Drawers.AboutUs]: undefined;
   [Drawers.Albums]: undefined;
+  [Drawers.Collaboration]: undefined;
   [Drawers.Courses]: undefined;
+  [Drawers.Donation]: undefined;
   [Drawers.Events]: undefined;
   [Drawers.Example]: undefined;
+  [Drawers.Listening]: undefined;
   [Drawers.LiveMeeting]: undefined;
+  [Drawers.Meditation]: undefined;
+  [Drawers.MyAlbums]: undefined;
+  [Drawers.MyCourses]: undefined;
+  [Drawers.MyEvents]: undefined;
+  [Drawers.MyLiveMeeting]: undefined;
+  [Drawers.Podcast]: undefined;
+  [Drawers.PrivateConsultation]: undefined;
+  [Drawers.Reading]: undefined;
   [Drawers.SupportService]: undefined;
   [Drawers.Tabs]: undefined;
+  [Drawers.Writing]: undefined;
 };
 
 export type RootDrawerProps<

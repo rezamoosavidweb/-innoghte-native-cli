@@ -9,6 +9,7 @@ import { Drawers } from '@/navigation/routes';
 import { translate, TxKeyPath } from '@/translations/utils';
 
 import BackButton from '@/components/BackButton';
+import CustomDrawerContent from '@/components/DrawerContent';
 import { Example, Tabs } from '@/screens';
 import Albums from '@/screens/tabs/my-courses/albums';
 import Courses from '@/screens/tabs/my-courses/courses';
@@ -26,27 +27,30 @@ const genOptions = (title: TxKeyPath): DrawerNavigationOptions => ({
 
 export default function DrawerNavigation() {
   return (
-    <Drawer.Navigator  initialRouteName={Drawers.Tabs}>
+    <Drawer.Navigator
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      initialRouteName={Drawers.Tabs}
+    >
       <Drawer.Screen component={Tabs} name={Drawers.Tabs} />
       <Drawer.Screen component={Example} name={Drawers.Example} />
       <Drawer.Screen
         component={Courses}
-        name={Drawers.Courses}
+        name={Drawers.MyCourses}
         options={genOptions('courses')}
       />
       <Drawer.Screen
         component={Albums}
-        name={Drawers.Albums}
+        name={Drawers.MyAlbums}
         options={genOptions('albums')}
       />
       <Drawer.Screen
         component={LiveMeeting}
-        name={Drawers.LiveMeeting}
+        name={Drawers.MyLiveMeeting}
         options={genOptions('live_meeting')}
       />
       <Drawer.Screen
         component={Events}
-        name={Drawers.Events}
+        name={Drawers.MyEvents}
         options={genOptions('events')}
       />
     </Drawer.Navigator>
