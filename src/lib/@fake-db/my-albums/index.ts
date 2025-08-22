@@ -1,357 +1,152 @@
-export const albums = [
+export const myAlbums = [
   {
-    access_type: 'اشتراک آنلاین و دائمی',
-    album_demos: [
-      {
-        course_id: 11,
-        duration: 2,
-        id: 7,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724316263-iagPRVPZ.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'در ره تو',
-        url: 'https://dl.innoghte.com/mp3/demo/01-dar-rahe-to-demo.mp3',
-      },
-      {
-        course_id: 11,
-        duration: 2,
-        id: 8,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724316263-0nclNdeV.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'من مست و تو دیوانه',
-        url: 'https://dl.innoghte.com/mp3/demo/04-man-masto-to-divane-demo.mp3',
-      },
-      {
-        course_id: 11,
-        duration: 2,
-        id: 9,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724316263-wgfGvkRE.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'در پرتو تو',
-        url: 'https://dl.innoghte.com/mp3/demo/10-dar-parto-e-to-demo.mp3',
-      },
-    ],
     capacity: 200_000_000,
-    chapters_count: 10,
-    color: 'green1',
-    demo: null,
     discount_percent: null,
-    discount_price: 9,
+    discount_price: 490_000,
     discount_type: 1,
-    downloadable: 1,
-    duration: '05:00:00',
     full_info:
       '<p>مولانا رومی، شاعر و فیلسوف بزرگ ایرانی است که در قرن 13 میلادی زندگی کرد. آثار او از جمله “مثنوی”، “دیوان شمس تبریزی” و “غزلیات”، به عنوان یکی از میراث‌های مهم ادبی و فرهنگی ایران شناخته می‌شوند. موسیقی مدیتیشن سبک مولانا رومی به منظور ارتقای روحیه، آرامش و ارتباط با خداوند استفاده می‌شود. این سبک موسیقی شامل آهنگ‌ها، موسیقی‌های سنتی و سرودهایی است که به شعرهای مولانا رومی همراهی می‌کند. معمولاً از سازهایی مانند نی، تار، عود و دف در این موسیقی استفاده می‌شود. صداهای واج‌ها و آهنگ‌های این سبک موسیقی بر زمینه‌ای آرام و متفکر ساخته شده‌اند تا در مدیتیشن و تمرکز کمک کنند. موسیقی مدیتیشن سبک مولانا رومی با الهام از شعرهای مولانا، پیام‌های عمیق فلسفی، عشق و استقامت را منتقل می‌کند. این سبک موسیقی قادر است در آرامش‌بخشی و تسهیل فرآیند مدیتیشن وارد شود و به فرد کمک کند تا با خود در ارتباط باشد، ذهن خود را سکون بخشد و به حضور در لحظه تمرکز کند. استفاده از موسیقی مدیتیشن سبک مولانا رومی، علاوه بر ارتقای تجربه مدیتیشن، به فرد این امکان را می‌دهد تا از انرژی‌های مثبت و الهام‌بخش مولانا بهره‌برداری کند و بازتاب آن در زندگی روزمره خود داشته باشد. در کل، موسیقی مدیتیشن سبک مولانا رومی یک راه برای ارتقای روحیه و متمرکز شدن در زمان حاضر است که به وسیله آهنگ‌ها و صداهایی آرامش‌بخش و شعرهای عمیق مولانا، فرد را به سمت آرامش، تمرکز و ارتباط با داخل خود و جهان بزرگتر هدایت می‌کند. البته آلبوم “در پرتو تو” یک آلبوم موسیقی بی کلام می باشد.</p>',
-    genre: 'رومی',
     id: 11,
     image_media: [
       {
         course_id: 11,
         cover: 1,
         id: 18,
-        src: 'https://admin.innoghte.com/storage/front/images/album_cover/1724316263-EfEB5rrz.jpg',
+        src: 'https://admin.innoghte.ir/storage/front/images/album_cover/1724316263-EfEB5rrz.jpg',
       },
     ],
     included_courses: [],
     included_courses_count: 0,
     package: 0,
     points: 5,
-    price: 9,
-    remain_capacity: 199_999_979,
-    requirements: null,
+    price: 490_000,
+    remain_capacity: 199_999_339,
     short_info:
       'آلبوم “در پرتو تو” شامل 10 بخش و بیش از 5 ساعت موسیقی مبتنی بر سبک مولانا به جهت انجام مدیتیشن می باشد. <v>موسیقی مدیتیشن مبتنی بر سبک مولانا رومی، به عنوان یک روش مدیتیشن و تمرکز بر اصول فلس',
     show: 1,
     show_fa: 1,
-    tags: 'رومی',
     title_fa: 'در پرتو تو',
   },
   {
-    access_type: 'اشتراک آنلاین و دائمی',
-    album_demos: [
-      {
-        course_id: 10,
-        duration: 2,
-        id: 4,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724315622-wExZ2RyV.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'لحظه',
-        url: 'https://dl.innoghte.com/mp3/demo/01lahze-demo.mp3',
-      },
-      {
-        course_id: 10,
-        duration: 2,
-        id: 5,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724315622-2Cw2iWjw.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'ملایم',
-        url: 'https://dl.innoghte.com/mp3/demo/02-molayem-demo.mp3',
-      },
-      {
-        course_id: 10,
-        duration: 2,
-        id: 6,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724315622-hICudkk6.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'تمرکز',
-        url: 'https://dl.innoghte.com/mp3/demo/03-tamarkoz-demo.mp3',
-      },
-    ],
     capacity: 200_000_000,
-    chapters_count: 10,
-    color: 'green1',
-    demo: null,
     discount_percent: null,
-    discount_price: 9,
+    discount_price: 490_000,
     discount_type: 1,
-    downloadable: 0,
-    duration: '12:00:00',
     full_info:
       '<p>محتوای ارائه شده در این آلبوم بیش از 12 ساعت موسیقی را دربر می گیرد.</p><p>موسیقی می تواند به شما کمک کند تمرکز خود را حفظ کنید، در کار خود عمیق شوید، و کارهایتان را با رضایت بیشتری انجام دهید. اما همه اینها در صورتی محقق می شود که موسیقی درستی برای کار کردن انتخاب کرده باشید.</p><p>موسیقی مثبت و انرژی بخش به شما انرژی مثبت می بخشد.</p>',
-    genre: 'موسیقی کار و اندیشه',
     id: 10,
     image_media: [
       {
         course_id: 10,
         cover: 1,
         id: 15,
-        src: 'https://admin.innoghte.com/storage/front/images/album_cover/1724315622-fwNm2HUO.jpg',
+        src: 'https://admin.innoghte.ir/storage/front/images/album_cover/1724315622-fwNm2HUO.jpg',
       },
     ],
     included_courses: [],
     included_courses_count: 0,
     package: 0,
     points: 5,
-    price: 9,
-    remain_capacity: 199_999_982,
-    requirements: null,
+    price: 490_000,
+    remain_capacity: 199_999_686,
     short_info:
       '“آلبوم های موسیقی بیکلام مناسب برای خواب، مدیتیشن و دیگر فعالیت های روزانه ”<v>آلبوم اندیشه در 10 بخش با هدف ایجاد تمرکز و آرامش در ذهن شما در زمان کار، مطالعه و آموزش ایجاد شده است.',
     show: 1,
     show_fa: 1,
-    tags: 'موسیقی کار و اندیشه',
     title_fa: 'اندیشه',
   },
   {
-    access_type: 'اشتراک آنلاین و دائمی',
-    album_demos: [
-      {
-        course_id: 9,
-        duration: 2,
-        id: 1,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724313976-hEnjwOU0.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'خفته',
-        url: 'https://dl.innoghte.com/mp3/demo/01-khofte-demo.mp3',
-      },
-      {
-        course_id: 9,
-        duration: 2,
-        id: 2,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724313976-YcLdvCqI.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'پیانو',
-        url: 'https://dl.innoghte.com/mp3/demo/03-piano-demo.mp3',
-      },
-      {
-        course_id: 9,
-        duration: 2,
-        id: 3,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724313976-F2ZVMv5Z.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'جیرجیرک',
-        url: 'https://dl.innoghte.com/mp3/demo/09-jirjirak.mp3',
-      },
-    ],
     capacity: 200_000_000,
-    chapters_count: 10,
-    color: 'green1',
-    demo: null,
     discount_percent: null,
-    discount_price: 9,
+    discount_price: 490_000,
     discount_type: 1,
-    downloadable: 1,
-    duration: '17:00:00',
     full_info:
       '<p>آلبوم “ابدیت” شامل ده بخش و بیش از 18 ساعت موسیقی آرام بخش جهت استفاده برای خواب و افزایش هرچه بیشتر کیفیت استراحت شماست.</p><p>تاثیر موسیقی مناسب برای خواب را محققان ثابت کرده اند، از این آلبوم حرفه ای بهره ببرید برای بهبود خواب، لذت خواب عمیق و شروع یک صبح آرام .</p>',
-    genre: 'موشیقی خواب',
     id: 9,
     image_media: [
       {
         course_id: 9,
         cover: 1,
         id: 11,
-        src: 'https://admin.innoghte.com/storage/front/images/album_cover/1724313976-jhmzhloH.jpg',
+        src: 'https://admin.innoghte.ir/storage/front/images/album_cover/1724313976-jhmzhloH.jpg',
       },
     ],
     included_courses: [],
     included_courses_count: 0,
     package: 0,
     points: 5,
-    price: 9,
-    remain_capacity: 199_999_988,
-    requirements: null,
+    price: 490_000,
+    remain_capacity: 199_999_743,
     short_info:
       '“آلبوم های موسیقی بیکلام مناسب برای خواب، مدیتیشن و دیگر فعالیت های روزانه ”<v>آلبوم شامل 10 بخش می باشد.',
     show: 1,
     show_fa: 1,
-    tags: 'موشیقی خواب',
     title_fa: 'ابدیت',
   },
   {
-    access_type: 'اشتراک آنلاین و دائمی',
-    album_demos: [
-      {
-        course_id: 8,
-        duration: 2,
-        id: 13,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724312553-Xh4k11cY.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'اکنون',
-        url: 'https://dl.innoghte.com/mp3/demo/01-aknoon-demo.mp3',
-      },
-      {
-        course_id: 8,
-        duration: 2,
-        id: 14,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724312553-VdHOQaK6.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'میوه شیرین',
-        url: 'https://dl.innoghte.com/mp3/demo/07-639 Hz- miveye shirin-demo.mp3',
-      },
-      {
-        course_id: 8,
-        duration: 2,
-        id: 15,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724312553-X8meCwgi.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'صبح بهبودی',
-        url: 'https://dl.innoghte.com/mp3/demo/10-sobhe-behboodi-demo.mp3',
-      },
-    ],
     capacity: 200_000_000,
-    chapters_count: 10,
-    color: 'green1',
-    demo: null,
     discount_percent: null,
-    discount_price: 9,
+    discount_price: 490_000,
     discount_type: 1,
-    downloadable: 1,
-    duration: '11:00:00',
     full_info:
       '<p>این نوع موسیقی برای کاهش استرس و افزایش روحیه و انرژی مثبت به کار می‌رود. موسیقی شفابخش برای پاکسازی هاله و فضا و پاکسازی انرژی های منفی نیز استفاده می شود. از دیگر فواید این آلبوم فوق العاده می توان به آرام کردن ذهن و تسکین اختلالات عصبی اشاره کرد. برخلاف باور های غلط ایجاد شده، نمیتوان هر بیماری ذهنی را با موسیقی درمان کرد و این مسئله بستگی به نوع بیماری و شخص بیمار متفاوت خواهد بود، اما به صورت کلی نمیتوان تاثیر موسیقی بر بهبود و یا حتی درمان بسیاری از اختلالات را نیز نادیده گرفت. این نوع موسیقی از فراکانس 432 هرتز شروع می شود.</p>',
-    genre: 'موسیقی آرامش بخش',
     id: 8,
     image_media: [
       {
         course_id: 8,
         cover: 1,
         id: 91,
-        src: 'https://admin.innoghte.com/storage/front/images/album_cover/1724312350-MpHdIFEZ.jpg',
+        src: 'https://admin.innoghte.ir/storage/front/images/album_cover/1724312350-MpHdIFEZ.jpg',
       },
     ],
     included_courses: [],
     included_courses_count: 0,
     package: 0,
     points: 5,
-    price: 9,
-    remain_capacity: 199_999_985,
-    requirements: null,
+    price: 490_000,
+    remain_capacity: 199_999_612,
     short_info:
       '“آلبوم های موسیقی بیکلام مناسب برای خواب، مدیتیشن و دیگر فعالیت های روزانه ”<v>آلبوم “صبح بهبودی” شامل ده بخش و بیش از 11 ساعت موسیقی شفا بخش است.',
     show: 1,
     show_fa: 1,
-    tags: 'موسیقی آرامش بخش',
     title_fa: 'صبح بهبودی',
   },
   {
-    access_type: 'اشتراک آنلاین و دائمی',
-    album_demos: [
-      {
-        course_id: 7,
-        duration: 2,
-        id: 10,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724310764-tH8ZC9Hy.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'رها',
-        url: 'https://dl.innoghte.com/mp3/demo/01-raha-demo.mp3',
-      },
-      {
-        course_id: 7,
-        duration: 2,
-        id: 11,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724311223-v4i3riVD.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'شادمان',
-        url: 'https://dl.innoghte.com/mp3/demo/02-shademan-demo.mp3',
-      },
-      {
-        course_id: 7,
-        duration: 2,
-        id: 12,
-        image:
-          'https://admin.innoghte.com/storage/front/images/album_cover/1724311223-UDWTDZvg.jpg',
-        tags: 'موسیقی مدیتیشن',
-        title: 'آسایش',
-        url: 'https://dl.innoghte.com/mp3/demo/08-aasaayesh-demo.mp3',
-      },
-    ],
     capacity: 20_000_000,
-    chapters_count: 10,
-    color: 'green1',
-    demo: null,
     discount_percent: null,
-    discount_price: 9,
+    discount_price: 490_000,
     discount_type: 1,
-    downloadable: 1,
-    duration: '11:00:00',
     full_info:
       '<p>آلبوم شادمان در ۱۰ بخش با هدف ایجاد تمرکز و آرامش در ذهن و بدن ورزشکار ایجاد شده است. محتوای ارائه شده در این آلبوم بیش از ۹ ساعت موسیقی را دربر می گیرد. موسیقی یوگا شامل رنج وسیعی از ساز های غربی، هندی و سنتی، صدا های موجود در طبیعت، مناجات و غیره است. موسیقی یوگا به تمرینات یوگا کمک می کند تا ذهن و بدن را آرام کند و تمرکز را افزایش دهد. یوگا یک تمرین ذهنی و بدنی با یک تاریخ ۵۰۰۰ ساله در فلسفه هندی است. سبک های مختلف یوگا موقعیت های جسمانی، تکنیک های تنفس و مدیتیشن و آرامش را ترکیب می کنند. آلبوم شادمان در ۱۰ بخش با هدف ایجاد تمرکز و آرامش در ذهن و بدن ورزشکار ایجاد شده است. محتوای ارائه شده در این آلبوم بیش از ۹ ساعت موسیقی را دربر می گیرد. موسیقی یوگا شامل رنج وسیعی از ساز های غربی، هندی و سنتی، صدا های موجود در طبیعت، مناجات و غیره است. موسیقی یوگا به تمرینات یوگا کمک می کند تا ذهن و بدن را آرام کند و تمرکز را افزایش دهد. یوگا یک تمرین ذهنی و بدنی با یک تاریخ ۵۰۰۰ ساله در فلسفه هندی است. سبک های مختلف یوگا موقعیت های جسمانی، تکنیک های تنفس و مدیتیشن و آرامش را ترکیب می کنند.</p>',
-    genre: 'موسیقی یوگا و ورزش',
     id: 7,
     image_media: [
       {
         course_id: 7,
         cover: 1,
         id: 81,
-        src: 'https://admin.innoghte.com/storage/front/images/album_cover/1724309784-cgmSRiJt.jpg',
+        src: 'https://admin.innoghte.ir/storage/front/images/album_cover/1724309784-cgmSRiJt.jpg',
       },
     ],
     included_courses: [],
     included_courses_count: 0,
     package: 0,
-    points: 4.67,
-    price: 9,
-    remain_capacity: 19_999_985,
-    requirements: null,
+    points: 4.75,
+    price: 490_000,
+    remain_capacity: 19_999_674,
     short_info:
       '“آلبوم های موسیقی بیکلام مناسب برای خواب، مدیتیشن و دیگر فعالیت های روزانه ”<v>آلبوم شادمان با هدف ایجاد تمرکز و آرامش در ذهن و بدن ورزشکار ایجاد شده است.',
     show: 1,
     show_fa: 1,
-    tags: 'موسیقی یوگا و ورزش',
     title_fa: 'شادمان',
   },
 ];
 
-export type AlbumType = (typeof albums)[0];
+export type MyAlbumType = (typeof myAlbums)[0];
 const SLEEP_DURATION = 1000;
-export function fetchAlbumsFake(): Promise<typeof albums> {
+export function fetchAlbumsFake(): Promise<typeof myAlbums> {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(albums);
+      resolve(myAlbums);
     }, SLEEP_DURATION);
   });
 }

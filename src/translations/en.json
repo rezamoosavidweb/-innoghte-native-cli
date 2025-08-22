@@ -51,7 +51,9 @@
   "terms": "Terms",
   "logout": "Logout",
   "search": "Search",
+  "learning_courses": "Learning Courses",
   "courses": "Courses",
+  "course": "Course",
   "albums": "Albums",
   "album": "Album",
   "live_meeting": "Live Meeting",
@@ -87,5 +89,9 @@
   "pastEvent": "Past",
   "ongoingEvent": "Ongoing",
   "upcomingEvent": "Upcoming",
-  "more_information_register": "Detail and Register"
+  "more_information_register": "Detail and Register",
+  "add_to_basket": "Add To Basket",
+  "online_subscription": "Online Subscription",
+  "music_count": "Music Count",
+  "number": "number"
 }

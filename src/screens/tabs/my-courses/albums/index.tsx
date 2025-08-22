@@ -4,23 +4,26 @@ import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
 
 import { Text } from '@/components/base';
 
-import { AlbumType, fetchAlbumsFake } from '@/lib/@fake-db/albums';
+import { fetchAlbumsFake, MyAlbumType } from '@/lib/@fake-db/my-albums';
 import { FONT_SIZES, SPACING } from '@/lib/theme-config';
 
 import AlbumCard from './Card';
 
-export default function Albums() {
+export default function MyAlbums() {
   const { data = [], isFetching } = useQuery({
     queryFn: fetchAlbumsFake,
     queryKey: ['albums'],
   });
 
   const renderItem = useCallback(
-    ({ item }: { readonly item: AlbumType }) => <AlbumCard item={item} />,
+    ({ item }: { readonly item: MyAlbumType }) => <AlbumCard item={item} />,
     [],
   );
 
-  const keyExtractor = useCallback((item: AlbumType) => item.id.toString(), []);
+  const keyExtractor = useCallback(
+    (item: MyAlbumType) => item.id.toString(),
+    [],
+  );
 
   const contentStyle = useMemo(
     () => ({ ...styles.container, paddingBottom: SPACING['2xl'] }),

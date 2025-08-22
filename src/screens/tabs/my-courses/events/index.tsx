@@ -9,7 +9,7 @@ import { FONT_SIZES, SPACING } from '@/lib/theme-config';
 
 import EventsCard from './Card';
 
-export default function Events() {
+export default function MyEvents() {
   const { data = [], isFetching } = useQuery({
     queryFn: fetchEventsFake,
     queryKey: ['events'],

@@ -42,5 +42,7 @@ export * from "./star";
 export * from "./style";
 export * from "./support";
 export * from "./ticket";
+export * from "./time-circle";
 export * from "./user-headphone";
 export * from "./website";
+

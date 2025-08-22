@@ -1,21 +1,27 @@
-import { PropsWithChildren } from 'react';
+import { ReactNode } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@/hooks';
 
 import { BORDER_RADIUS, SPACING } from '@/lib/theme-config';
 
-import { View } from './View';
+import { View } from '../View';
 
-export default function Card({ children }: PropsWithChildren) {
+type Props = {
+  readonly bgColor?: string;
+  readonly borderColor?: string;
+  readonly children: ReactNode;
+};
+
+export default function Card({ bgColor, borderColor, children }: Props) {
   const { theme } = useTheme();
   return (
     <View
       style={[
         styles.container,
         {
-          backgroundColor: theme.colors.card,
-          borderColor: theme.colors.border,
+          backgroundColor: bgColor || theme.colors.card,
+          borderColor: borderColor || theme.colors.border,
         },
       ]}
     >

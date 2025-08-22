@@ -1,4 +1,4 @@
-export const liveMeetings = [
+export const myLiveMeetings = [
   {
     capacity: 200_000_000,
     discount_percent: null,
@@ -1092,12 +1092,12 @@ export const liveMeetings = [
     title_fa: 'روی خط - جلسه 1',
   },
 ];
-export type LiveMeetingType = (typeof liveMeetings)[0];
+export type LiveMeetingType = (typeof myLiveMeetings)[0];
 const SLEEP_DURATION = 1000;
-export function fetchLiveMeetingFake(): Promise<typeof liveMeetings> {
+export function fetchLiveMeetingFake(): Promise<typeof myLiveMeetings> {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(liveMeetings);
+      resolve(myLiveMeetings);
     }, SLEEP_DURATION);
   });
 }

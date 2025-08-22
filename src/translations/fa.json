@@ -51,7 +51,9 @@
   "terms": "شرایط استفاده از خدمات",
   "logout": "خروج ازنرم افزار",
   "search": "جستجو",
-  "courses": "دوره های آموزشی",
+  "learning_courses": "دوره های آموزشی",
+  "courses": "دوره ها",
+  "course": "دوره",
   "albums": "آلبوم ها",
   "album": "آلبوم",
   "live_meeting": "روی خط",
@@ -87,5 +89,10 @@
   "pastEvent": "برگزارشده",
   "ongoingEvent": "درحال برگزاری",
   "upcomingEvent": "برگزاری در آینده",
-  "more_information_register": "اطلاعات بیشتر وثبت نام"
+  "more_information_register": "اطلاعات بیشتر وثبت نام",
+  "add_to_basket": "افزودن به سبد خرید",
+  "online_subscription": "اشتراک آنلاین",
+  "coast": "هزینه",
+  "music_count": "تعداد آهنگ",
+  "number": "عدد"
 }

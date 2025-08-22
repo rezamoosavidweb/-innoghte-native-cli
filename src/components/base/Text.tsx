@@ -4,17 +4,18 @@ import { useTheme } from '@/hooks';
 
 import { FONT_SIZES } from '@/lib/theme-config';
 
-type Props = {
+export type CustomTextProps = {
   readonly primary?: boolean;
   readonly weight?: 'bold' | 'heavy' | 'medium' | 'regular' | 'semibold';
 } & TextProps;
+
 export function Text({
   children,
   primary = false,
   style,
   weight = 'regular',
   ...rest
-}: Props) {
+}: CustomTextProps) {
   const { theme } = useTheme();
   return (
     <TextComponent

@@ -34,7 +34,7 @@ export default function CustomDrawerContent(
           <Divider label={el?.label as TxKeyPath} />
           {el?.children?.map((item) => {
             const Icon = item?.icon;
-            const isActive = pathname === item?.screen;
+            const isActive = pathname === (item?.screen as string);
 
             return (
               <DrawerItem
@@ -42,7 +42,7 @@ export default function CustomDrawerContent(
                   <Icon color={theme.colors.text} width={size} />
                 )}
                 key={item?.id}
-                label={translate(item?.label as TxKeyPath)}
+                label={translate(item?.label)}
                 labelStyle={[
                   {
                     color: isActive ? 'white' : theme.colors.text,

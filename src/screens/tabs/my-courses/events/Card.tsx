@@ -4,9 +4,9 @@ import { StyleSheet } from 'react-native';
 import { translate, TxKeyPath } from '@/translations/utils';
 
 import { Button, View } from '@/components/base';
+import CardRow from '@/components/base/card/CardRow';
 import { AvatarIcon, CoinsIcon, TicketIcon } from '@/components/icons';
-import Card from '@/components/product-card';
-import CardRow from '@/components/product-card/CardRow';
+import Card from '@/components/my-product-card';
 
 import { EventType } from '@/lib/@fake-db/events';
 import { SPACING } from '@/lib/theme-config';
@@ -41,7 +41,11 @@ const generateButtons = (state: string, type: string) => {
 };
 
 const EventCard = memo(({ item }: { readonly item: EventType }) => (
-  <Card imageUrl={item?.image_media[0]?.src} key={item?.id} title={item?.title_fa}>
+  <Card
+    imageUrl={item?.image_media[0]?.src}
+    key={item?.id}
+    title={item?.title_fa}
+  >
     <View style={styles.cardContent}>
       <CardRow
         icon={<TicketIcon />}

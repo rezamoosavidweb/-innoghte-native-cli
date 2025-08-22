@@ -11,10 +11,12 @@ import { translate, TxKeyPath } from '@/translations/utils';
 import BackButton from '@/components/BackButton';
 import CustomDrawerContent from '@/components/DrawerContent';
 import { Example, Tabs } from '@/screens';
-import Albums from '@/screens/tabs/my-courses/albums';
-import Courses from '@/screens/tabs/my-courses/courses';
-import Events from '@/screens/tabs/my-courses/events';
-import LiveMeeting from '@/screens/tabs/my-courses/live-meeting';
+import Albums from '@/screens/albums';
+import Courses from '@/screens/courses';
+import MyAlbums from '@/screens/tabs/my-courses/albums';
+import MyCourses from '@/screens/tabs/my-courses/courses';
+import MyEvents from '@/screens/tabs/my-courses/events';
+import MyLiveMeeting from '@/screens/tabs/my-courses/live-meeting';
 
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
 
@@ -35,21 +37,31 @@ export default function DrawerNavigation() {
       <Drawer.Screen component={Example} name={Drawers.Example} />
       <Drawer.Screen
         component={Courses}
-        name={Drawers.MyCourses}
+        name={Drawers.Courses}
         options={genOptions('courses')}
       />
       <Drawer.Screen
         component={Albums}
+        name={Drawers.Albums}
+        options={genOptions('albums')}
+      />
+      <Drawer.Screen
+        component={MyCourses}
+        name={Drawers.MyCourses}
+        options={genOptions('courses')}
+      />
+      <Drawer.Screen
+        component={MyAlbums}
         name={Drawers.MyAlbums}
         options={genOptions('albums')}
       />
       <Drawer.Screen
-        component={LiveMeeting}
+        component={MyLiveMeeting}
         name={Drawers.MyLiveMeeting}
         options={genOptions('live_meeting')}
       />
       <Drawer.Screen
-        component={Events}
+        component={MyEvents}
         name={Drawers.MyEvents}
         options={genOptions('events')}
       />

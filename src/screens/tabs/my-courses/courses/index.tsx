@@ -9,7 +9,7 @@ import { FONT_SIZES, SPACING } from '@/lib/theme-config';
 
 import CourseCard from './Card';
 
-export default function Courses() {
+export default function MyCourses() {
   const { data = [], isFetching } = useQuery({
     queryFn: fetchCoursesFake,
     queryKey: ['courses'],

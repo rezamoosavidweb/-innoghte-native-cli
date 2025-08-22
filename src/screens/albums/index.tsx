@@ -4,31 +4,23 @@ import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
 
 import { Text } from '@/components/base';
 
-import {
-  fetchLiveMeetingFake,
-  LiveMeetingType,
-} from '@/lib/@fake-db/live-meeting';
+import { AlbumType, fetchAlbumsFake } from '@/lib/@fake-db/albums';
 import { FONT_SIZES, SPACING } from '@/lib/theme-config';
 
-import LiveMeetingCard from './Card';
+import AlbumCard from './Card';
 
-export default function MyLiveMeetings() {
+export default function Albums() {
   const { data = [], isFetching } = useQuery({
-    queryFn: fetchLiveMeetingFake,
-    queryKey: ['live-meetings'],
+    queryFn: fetchAlbumsFake,
+    queryKey: ['albums'],
   });
 
   const renderItem = useCallback(
-    ({ item }: { readonly item: LiveMeetingType }) => (
-      <LiveMeetingCard item={item} />
-    ),
+    ({ item }: { readonly item: AlbumType }) => <AlbumCard item={item} />,
     [],
   );
 
-  const keyExtractor = useCallback(
-    (item: LiveMeetingType) => item.id.toString(),
-    [],
-  );
+  const keyExtractor = useCallback((item: AlbumType) => item.id.toString(), []);
 
   const contentStyle = useMemo(
     () => ({ ...styles.container, paddingBottom: SPACING['2xl'] }),
@@ -36,11 +28,7 @@ export default function MyLiveMeetings() {
   );
 
   if (isFetching) {
-    return (
-      <Text style={{ fontSize: FONT_SIZES.xxl }}>
-        Loading live meetings ...
-      </Text>
-    );
+    return <Text style={{ fontSize: FONT_SIZES.xxl }}>Loading albums ...</Text>;
   }
 
   return (

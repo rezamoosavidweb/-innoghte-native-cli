@@ -1,42 +1,35 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { translate } from '@/translations/utils';
 
 import { Button, View } from '@/components/base';
+import Card from '@/components/base/card/Card';
 import CardRow from '@/components/base/card/CardRow';
-import { CoinsIcon, TicketIcon } from '@/components/icons';
-import Card from '@/components/my-product-card';
-import ProductType from '@/components/ProductType';
+import { MusicIcon, TimeCircleIcon } from '@/components/icons';
 
-import { LiveMeetingType } from '@/lib/@fake-db/live-meeting';
+import { AlbumType } from '@/lib/@fake-db/albums';
 import { purchasedCourses } from '@/lib/@fake-db/purchased';
 import { SPACING } from '@/lib/theme-config';
-import { convertPrice } from '@/utils/numbers';
 
-const CONVERT_NUMBER_VALUE = 10;
+import Image from './Image';
 
-const LiveMeetingCard = memo(({ item }: { readonly item: LiveMeetingType }) => (
-  <Card
-    imageUrl={item?.image_media[0]?.src}
-    key={item?.id}
-    title={item?.title_fa}
-  >
+const AlbumCard = memo(({ item }: { readonly item: AlbumType }) => (
+  <Card bgColor="#122320" borderColor="#122320" key={item?.id}>
+    <Image imageUrl={item?.image_media[0]?.src} />
     <View style={styles.cardContent}>
       <CardRow
-        icon={<TicketIcon />}
-        title="product_type"
-        value={<ProductType isPackage={!!item?.package} />}
+        icon={<MusicIcon width={20} />}
+        title="music_count"
+        titleProps={{ primary: false }}
+        value={item?.chapters_count + ' ' + translate('number')}
       />
-      {/* <CardRow
-                    icon={<StarIcon />}
-                    title="chapters_count"
-                    value={item?.included_courses_count}
-                  /> */}
       <CardRow
-        icon={<CoinsIcon />}
-        title="price"
-        value={convertPrice(item?.price ?? 0 / CONVERT_NUMBER_VALUE)}
+        icon={<TimeCircleIcon />}
+        title="duration"
+        titleProps={{ primary: false }}
+        value={item?.duration}
       />
     </View>
     <View style={styles.buttonRow}>
@@ -55,8 +48,8 @@ const LiveMeetingCard = memo(({ item }: { readonly item: LiveMeetingType }) => (
     </View>
   </Card>
 ));
-LiveMeetingCard.displayName = 'LiveMeetingCard';
-export default LiveMeetingCard;
+AlbumCard.displayName = 'AlbumCard';
+export default AlbumCard;
 
 const styles = StyleSheet.create({
   buttonRow: {

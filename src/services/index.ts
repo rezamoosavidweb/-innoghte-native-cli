@@ -1,9 +1,8 @@
 import ky from 'ky';
 
 const prefixUrl = `${process.env.API_URL ?? ''}/`;
-console.log({prefixUrl});
 
-export const request = ky.extend({
+export const requestApi = ky.extend({
   headers: {
     Accept: 'application/json',
   },

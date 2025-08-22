@@ -4,9 +4,9 @@ import { StyleSheet } from 'react-native';
 import { translate } from '@/translations/utils';
 
 import { Button, View } from '@/components/base';
+import CardRow from '@/components/base/card/CardRow';
 import { CoinsIcon, StarIcon, TicketIcon } from '@/components/icons';
-import Card from '@/components/product-card';
-import CardRow from '@/components/product-card/CardRow';
+import Card from '@/components/my-product-card';
 import ProductType from '@/components/ProductType';
 
 import { CourseType } from '@/lib/@fake-db/courses';

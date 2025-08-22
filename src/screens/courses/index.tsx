@@ -4,29 +4,24 @@ import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
 
 import { Text } from '@/components/base';
 
-import {
-  fetchLiveMeetingFake,
-  LiveMeetingType,
-} from '@/lib/@fake-db/live-meeting';
+import { CourseType, fetchCoursesFake } from '@/lib/@fake-db/courses';
 import { FONT_SIZES, SPACING } from '@/lib/theme-config';
 
-import LiveMeetingCard from './Card';
+import CourseCard from './Card';
 
-export default function MyLiveMeetings() {
+export default function Courses() {
   const { data = [], isFetching } = useQuery({
-    queryFn: fetchLiveMeetingFake,
-    queryKey: ['live-meetings'],
+    queryFn: fetchCoursesFake,
+    queryKey: ['courses'],
   });
 
   const renderItem = useCallback(
-    ({ item }: { readonly item: LiveMeetingType }) => (
-      <LiveMeetingCard item={item} />
-    ),
+    ({ item }: { readonly item: CourseType }) => <CourseCard item={item} />,
     [],
   );
 
   const keyExtractor = useCallback(
-    (item: LiveMeetingType) => item.id.toString(),
+    (item: CourseType) => item.id.toString(),
     [],
   );
 
@@ -37,9 +32,7 @@ export default function MyLiveMeetings() {
 
   if (isFetching) {
     return (
-      <Text style={{ fontSize: FONT_SIZES.xxl }}>
-        Loading live meetings ...
-      </Text>
+      <Text style={{ fontSize: FONT_SIZES.xxl }}>Loading courses ...</Text>
     );
   }
 

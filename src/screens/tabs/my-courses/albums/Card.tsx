@@ -4,19 +4,19 @@ import { StyleSheet } from 'react-native';
 import { translate } from '@/translations/utils';
 
 import { Button, View } from '@/components/base';
+import CardRow from '@/components/base/card/CardRow';
 import { CoinsIcon, TicketIcon } from '@/components/icons';
-import Card from '@/components/product-card';
-import CardRow from '@/components/product-card/CardRow';
+import Card from '@/components/my-product-card';
 import ProductType from '@/components/ProductType';
 
-import { AlbumType } from '@/lib/@fake-db/albums';
+import { MyAlbumType } from '@/lib/@fake-db/my-albums';
 import { purchasedCourses } from '@/lib/@fake-db/purchased';
 import { SPACING } from '@/lib/theme-config';
 import { convertPrice } from '@/utils/numbers';
 
 const CONVERT_NUMBER_VALUE = 10;
 
-const AlbumCard = memo(({ item }: { readonly item: AlbumType }) => (
+const AlbumCard = memo(({ item }: { readonly item: MyAlbumType }) => (
   <Card
     imageUrl={item?.image_media[0]?.src}
     key={item?.id}

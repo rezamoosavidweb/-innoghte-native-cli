@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Card from '../base/Card';
+import Card from '@/components/base/card/Card';
+
 import CardHeader from './CardHeader';
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
   readonly title: string;
 };
 
-export default function ProductCard({ children, imageUrl, title }: Props) {
+export default function MyProductCard({ children, imageUrl, title }: Props) {
   return (
     <Card>
       <CardHeader imageUrl={imageUrl} title={title} />

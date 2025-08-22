@@ -1,11 +1,12 @@
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 
+import { useTheme } from '@/hooks';
 import { translate, TxKeyPath } from '@/translations/utils';
 
 import { FONT_SIZES, SPACING } from '@/lib/theme-config';
 
 export default function Divider({
-  borderColor = '#ccc',
+  borderColor,
   containerStyle,
   label,
 }: {
@@ -13,11 +14,17 @@ export default function Divider({
   readonly containerStyle?: StyleProp<ViewStyle>;
   readonly label?: TxKeyPath;
 }) {
+  const { theme } = useTheme();
   return (
     <View style={containerStyle}>
       <View style={styles.row}>
         {label ? <Text style={styles.text}>{translate(label)}</Text> : null}
-        <View style={[styles.line, { borderColor }]} />
+        <View
+          style={[
+            styles.line,
+            { borderColor: borderColor || theme?.colors?.border },
+          ]}
+        />
       </View>
     </View>
   );

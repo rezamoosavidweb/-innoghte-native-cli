@@ -40,7 +40,7 @@ export const menus: MenuSection[] = [
         disabled: false,
         icon: DegreeHatIcon,
         id: 11,
-        label: 'courses',
+        label: 'learning_courses',
         screen: Drawers.Courses,
         show: true,
       },
