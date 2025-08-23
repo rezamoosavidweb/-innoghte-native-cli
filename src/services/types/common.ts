@@ -1,3 +1,9 @@
+export type AudioMedia = {
+  course_id: number;
+  duration: string;
+  id: number;
+  urls: MediaUrl[];
+}
 export type CategoryDto = {
   active: boolean;
   created_at: Date;
@@ -28,6 +34,11 @@ export type MediaDto = {
   src: string;
   type: 'audio' | 'image' | 'video';
 };
+export type MediaUrl = {
+    id:       number;
+    media_id: number;
+    url:      string;
+}
 export type PaginationDto = {
   current_page: number;
   fist: string;
@@ -37,4 +48,10 @@ export type PaginationDto = {
   prev: string;
   total_items: number;
   total_pages: number;
+};
+
+export type RedirectLink = {
+  active: boolean;
+  label: string;
+  url: null | string;
 };
